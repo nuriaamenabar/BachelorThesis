@@ -76,7 +76,7 @@ PlayerSettings:
   androidFullscreenMode: 1
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
-  runInBackground: 1
+  runInBackground: 0
   captureSingleScreen: 0
   muteOtherAudioSources: 0
   Prepare IOS For Recording: 0
@@ -138,6 +138,7 @@ PlayerSettings:
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 2acc8ace7cbfbe8459092165383037b3, type: 2}
   - {fileID: -3953789059042334884, guid: 5f9ce90201823fb4389b3ff263fd20ed, type: 2}
   metroInputSource: 0
@@ -156,7 +157,9 @@ PlayerSettings:
   resolutionScalingMode: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Android: com.DefaultCompany.NewUnityProject1
+    Standalone: com.DefaultCompany.NewUnityProject1
   buildNumber:
     Standalone: 0
     iPhone: 0
