@@ -30,13 +30,12 @@ public class Physicsbutton : MonoBehaviour
 
     private float GetValue() 
     {
-        var value = Vector3.Distance(_startPos, transform.localPosition) / _joint.linearLimit.limit;
+        var value = Vector3.Distance(_startPos, transform.localPosition) / _joint.linearLimit.limit;//Calcula distancia entre dos punts
 
         if (Mathf.Abs(value) < deadZone)
             value = 0;
         return Mathf.Clamp(value,  -1f, 1f);
-    
-
+   
     }
 
     private void Pressed()
@@ -54,9 +53,5 @@ public class Physicsbutton : MonoBehaviour
         onReleased.Invoke();
         Debug.Log("Released");
     }
-
-
-
-
 
 }
