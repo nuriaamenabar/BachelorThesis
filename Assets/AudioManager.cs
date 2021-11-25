@@ -5,12 +5,14 @@ public class AudioManager : MonoBehaviour
 {
     [HideInInspector] public AudioSource source;
     public AudioClip sound;
+    private float time = 0.0f;
+    public float interpolationPeriod = 10f;
 
     void Awake() 
     {
         source= gameObject.AddComponent<AudioSource>();
         source.clip = sound;
-        source.loop = true;
+        source.loop = false;
     }
 
     public void Play()
@@ -19,9 +21,22 @@ public class AudioManager : MonoBehaviour
     }
 
 
-void Start()
-{
+    void Start()
+    {
         Play();
-}
+    }
+
+    private void Update()
+    {
+        time += Time.deltaTime;
+        if (time >= interpolationPeriod)
+        {
+            time = 0.0f;
+            Play();
+
+        }
+    }
+
+
 
 }

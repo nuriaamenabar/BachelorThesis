@@ -289,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 0}
   sound: {fileID: 8300000, guid: 1049df72f3396bf4dbd1f2109f589031, type: 3}
+  interpolationPeriod: 10
 --- !u!4 &193226780
 Transform:
   m_ObjectHideFlags: 0
