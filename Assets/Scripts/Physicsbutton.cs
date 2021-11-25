@@ -40,7 +40,7 @@ public class Physicsbutton : MonoBehaviour
 
     private void Pressed()
     {
-
+        //Aqui ficar aqccio que vull que passi quan estigui presionat
         _isPressed = true;
         onPressed.Invoke();
         Debug.Log("Pressed");
