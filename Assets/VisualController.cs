@@ -9,16 +9,20 @@ public class VisualController : MonoBehaviour
 {
    // [HideInInspector] public AudioSource source;
 
-    public GameObject notif;
+    public GameObject notifR;
+    public GameObject notifL;
     private float time = 0.0f;
     public float interpolationPeriod = 10f;
     private bool active;
+    private bool last;
 
 
     void Start()
     {
-       notif.SetActive(false);
-        active = false;
+       notifR.SetActive(false);
+       notifL.SetActive(false);
+       active = false;
+       last = false;
     }
 
      void Update()
@@ -27,15 +31,26 @@ public class VisualController : MonoBehaviour
         if (time >= interpolationPeriod)
         {
             time = 0.0f;
-            if (active == false)
+            if (!active)
             {
-                notif.SetActive(true);
-                active = true;
+                if (last)
+                {
+                    notifR.SetActive(true);
+                    active = true;
+                    last = false;
+                }
+                else
+                {
+                    notifL.SetActive(true);
+                    active = true;
+                    last = true;
+                }
 
             }
             else
             {
-                notif.SetActive(false); 
+                notifR.SetActive(false);
+                notifL.SetActive(false);
                 active = false; 
             }
 
