@@ -8,15 +8,15 @@ public class AudioManager : MonoBehaviour
     private float time = 0.0f;
     public float interpolationPeriod = 10f;
 
-    void Awake() 
+    void Awake()
     {
-        source= gameObject.AddComponent<AudioSource>();
+        source = gameObject.AddComponent<AudioSource>();
         source.clip = sound;
         source.loop = false;
     }
 
     public void Play()
-    { 
+    {
         source.Play();
     }
 

@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 0}
-  sound: {fileID: 8300000, guid: 1049df72f3396bf4dbd1f2109f589031, type: 3}
+  sound: {fileID: 8300000, guid: 48c00a2c58cf56746b61222e757881d8, type: 3}
   interpolationPeriod: 10
 --- !u!4 &193226780
 Transform:
