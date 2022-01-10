@@ -1,41 +1,95 @@
-using UnityEngine.Audio;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
+
+[RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
-    [HideInInspector] public AudioSource source;
-    public AudioClip sound;
-    private float time = 0.0f;
-    public float interpolationPeriod = 10f;
-
-    void Awake()
-    {
-        source = gameObject.AddComponent<AudioSource>();
-        source.clip = sound;
-        source.loop = false;
-    }
-
-    public void Play()
-    {
-        source.Play();
-    }
+    public AudioSource audioSource;
+    public float TimeBetweenPulse = 15f;
+    public float TimeBetweenPi = 0.5f;
+    private bool Left = true;
+    private float Timing = 0f;
+    private float TimeOff = 10f;
+    public bool pulsated;
 
 
+
+
+    // Start is called before the first frame update
     void Start()
     {
-        Play();
+        Timing = 0f;
+        WhichChannel();
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        time += Time.deltaTime;
-        if (time >= interpolationPeriod)
+        Timing += Time.deltaTime;
+        if (Timing >= TimeBetweenPulse)
         {
-            time = 0.0f;
-            Play();
+            if (pulsated)
+            {
+
+                Pulsate();
+                if (Timing >= TimeBetweenPulse + 3)//Cambiar el 5 si vull menys temps de pulse
+                {
+                    Timing = 0;
+                    WhichChannel();
+
+                }
+            }
+            else
+            {
+                audioSource.Play();
+                Timing = 0;
+                WhichChannel();
+            }
 
         }
     }
+
+
+
+    void Pulsate()
+    {
+
+        if (TimeOff <= TimeBetweenPi)
+        {
+            TimeOff += Time.deltaTime;
+        }
+
+        else
+        {
+            audioSource.Play();
+            TimeOff = 0f;
+        }
+
+    }
+
+
+
+
+
+
+    void WhichChannel()
+    {
+        if (Left)
+        {
+            audioSource.panStereo = -1;
+            Left = false;
+        }
+        else
+        {
+            audioSource.panStereo = 1;
+            Left = true;
+        }
+
+    }
+
 
 
 

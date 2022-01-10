@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(ur5_moveit)
+
+find_package(catkin REQUIRED message_generation std_msgs)
+
+catkin_package(CATKIN_DEPENDS message_runtime)
+
+add_message_files(
+  FILES
+  my_file.msg
+)
+
+install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  PATTERN "setup_assistant.launch" EXCLUDE)
+install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
