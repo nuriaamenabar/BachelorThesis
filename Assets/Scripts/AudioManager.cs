@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     private float Timing = 0f;
     private float TimeOff = 10f;
     public bool pulsated;
+    public float pulsedurtion = 2f;
 
 
 
@@ -35,7 +36,7 @@ public class AudioManager : MonoBehaviour
             {
 
                 Pulsate();
-                if (Timing >= TimeBetweenPulse + 3)//Cambiar el 5 si vull menys temps de pulse
+                if (Timing >= TimeBetweenPulse + pulsedurtion)//Cambiar el 5 si vull menys temps de pulse
                 {
                     Timing = 0;
                     WhichChannel();
