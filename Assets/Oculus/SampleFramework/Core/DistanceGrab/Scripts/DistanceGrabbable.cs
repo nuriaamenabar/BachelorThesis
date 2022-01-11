@@ -23,7 +23,7 @@ namespace OculusSampleFramework
         GrabManager m_crosshairManager;
         Renderer m_renderer;
         MaterialPropertyBlock m_mpb;
-
+  
 
         public bool InRange
         {
