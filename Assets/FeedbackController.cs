@@ -11,101 +11,63 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class FeedbackController : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public float TimeBetweenPulse = 15f;
-    public float TimeBetweenPi = 0.5f;
-
+    public bool AudioFeedback;
+    public bool VisualFeedback;
     public bool pulsated;
-    public float pulsedurtion = 2f;
 
     public GameObject notifR;
     public GameObject notifL;
     private GameObject currentnotif;
-    private float time = 0.0f;
-    public float interpolationPeriod = 10f;
-    private bool active;
-    private bool last;
+    public AudioSource audioSource;
 
-    public bool AudioFeedback;
-    public bool VisualFeedback;
-    private float TimeOff;
+
+    private float time = 0f;
+    public float InterpolationTime = 15f;
+    public float VisualDuration = 2f;// For non pulsated one
+    private bool last;
+    private int numpulses = 5;
+   
+  
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-
-        WhichChannel();
         notifR.SetActive(false);
         notifL.SetActive(false);
-        active = false;
         last = false;
-        TimeOff = 10f;
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
-        if (AudioFeedback)
-        {
-
-            if (time >= TimeBetweenPulse)
+ 
+            if (time >= InterpolationTime)
             {
+
                 if (pulsated)
                 {
 
-                    Pulsate();
-                    if (time >= TimeBetweenPulse + pulsedurtion)//Cambiar el 5 si vull menys temps de pulse
-                    {
-                        time = 0;
-                        WhichChannel();
-
-                    }
+                    WhichChannel();
+                    if (AudioFeedback) { DoDelayActionAudio(0.15f); }
+                    if (VisualFeedback) { DoDelayAction(0.15f); }
+                    time = 0;
+                  
                 }
                 else
                 {
-                    audioSource.Play();
-                    time = 0;
                     WhichChannel();
+                    if (AudioFeedback) { audioSource.Play(); }
+                    if (VisualFeedback) {DoDelayAction(VisualDuration);}
+                    time = 0;
                 }
 
             }
         }
 
-        if (VisualFeedback)
-
-            if (time >= interpolationPeriod)
-            {
-                WhichChannel();
-                time = 0.0f;
-               
-                DoDelayAction(2f);
-                
         
-            }
-    }
-
-
-    
-
-
-
-    void Pulsate()
-    {
-
-        if (TimeOff <= TimeBetweenPi)
-        {
-            TimeOff += Time.deltaTime;
-        }
-
-        else
-        {
-            audioSource.Play();
-            TimeOff = 0f;
-        }
-
-    }
 
     void WhichChannel()
     {
@@ -124,6 +86,8 @@ public class FeedbackController : MonoBehaviour
 
     }
 
+
+
     void DoDelayAction(float delayTime)
     {
         StartCoroutine(DelayAction(delayTime));
@@ -131,11 +95,35 @@ public class FeedbackController : MonoBehaviour
 
     IEnumerator DelayAction(float delayTime)
     {
-        currentnotif.SetActive(true);
-        //Wait for the specified delay time before continuing.
-        yield return new WaitForSeconds(delayTime);
-        currentnotif.SetActive(false);
-        //Do the action after the delay time has finished.
+
+
+        if (pulsated) {
+            for (int i = 0; i < numpulses; i++) {
+                yield return new WaitForSeconds((8-i)/3); currentnotif.SetActive(true); yield return new WaitForSeconds(delayTime); currentnotif.SetActive(false); }
+           
+        }
+
+       else {
+            currentnotif.SetActive(true);
+            yield return new WaitForSeconds(delayTime);
+            currentnotif.SetActive(false);
+        }
+    }
+
+
+
+    void DoDelayActionAudio(float delayTime)
+    {
+        StartCoroutine(DelayActionAudio(delayTime));
+    }
+
+    IEnumerator DelayActionAudio(float delayTime)
+    {
+
+            for (int i = 0; i < numpulses; i++)
+            {
+                yield return new WaitForSeconds((8 - i) / 3); audioSource.Play();
+            }
     }
 
 
