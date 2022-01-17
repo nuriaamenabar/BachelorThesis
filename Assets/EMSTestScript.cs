@@ -5,8 +5,6 @@ using Uduino;
 
 public class EMSTestScript : MonoBehaviour
 {
-    [Range(0, 255)]
-    public int intensity;
     private void Start()
     {
         UduinoManager.Instance.pinMode(6, PinMode.Output);
