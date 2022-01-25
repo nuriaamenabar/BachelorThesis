@@ -33,13 +33,16 @@ public class prova : MonoBehaviour
 
             trajplan.Target = TargetArray[i];
             if (TargetArray[i].tag == "Pink") {
-                if (rand < 75) { trajplan.TargetPlacement = Pinkplacement; }
-                else { trajplan.TargetPlacement = Greenplacement; }
+                //if (rand < 75) { trajplan.TargetPlacement = Pinkplacement; }
+                //else { trajplan.TargetPlacement = Greenplacement;
+                 trajplan.TargetPlacement = Pinkplacement; 
                 }
             if (TargetArray[i].tag == "Green") {
-                if (rand < 75) { trajplan.TargetPlacement = Greenplacement; }
-                else { trajplan.TargetPlacement = Pinkplacement; }
-            }
+                //if (rand < 75) { trajplan.TargetPlacement = Greenplacement; }
+                //else { trajplan.TargetPlacement = Pinkplacement;
+                    trajplan.TargetPlacement = Greenplacement;
+                }
+            
             i++;
             trajplan.PublishJoints();
             Timing = 0;
