@@ -14,6 +14,8 @@ public class TrajectoryPlannerUr5 : MonoBehaviour
     const float k_JointAssignmentWait = 0.005f;
     const float k_PoseAssignmentWait = 0.5f;
 
+    public bool is_executing = false;
+
     // Variables required for ROS communication
     [SerializeField]
     string m_RosServiceName = "ur5_moveit";
@@ -144,6 +146,7 @@ public class TrajectoryPlannerUr5 : MonoBehaviour
         };
 
         m_Ros.SendServiceMessage<MoverServiceResponse>(m_RosServiceName, request, TrajectoryResponse);
+        is_executing = true;
     }
 
     void TrajectoryResponse(MoverServiceResponse response)
@@ -156,6 +159,7 @@ public class TrajectoryPlannerUr5 : MonoBehaviour
         else
         {
             Debug.LogError("No trajectory returned from MoverService.");
+            is_executing = false;
         }
     }
 
@@ -211,6 +215,7 @@ public class TrajectoryPlannerUr5 : MonoBehaviour
 
             // All trajectories have been executed, open the gripper to place the target cube
             OpenGripper();
+            is_executing = false;
         }
 
         print(count);
