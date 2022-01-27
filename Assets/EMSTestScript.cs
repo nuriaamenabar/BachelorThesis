@@ -5,22 +5,34 @@ using Uduino;
 
 public class EMSTestScript : MonoBehaviour
 {
+    private float time = 0f;
+    public float InterpolationTime = 15f;
+    public float VisualDuration = 2f;
     private void Start()
     {
         UduinoManager.Instance.pinMode(6, PinMode.Output);
-        StartCoroutine(BlinkLoop());
+        //StartCoroutine(BlinkLoop());
         // StartCoroutine(EMSLoop());
+    }
+
+    void Update()
+    {
+        time += Time.deltaTime;
+
+        if (time >= InterpolationTime)
+        {
+            StartCoroutine(BlinkLoop()); 
+            time = 0;
+        }
     }
 
     IEnumerator BlinkLoop()
     {
-        while (true)
-        {
+        
             UduinoManager.Instance.digitalWrite(6, State.HIGH);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(VisualDuration);
             UduinoManager.Instance.digitalWrite(6, State.LOW);
-            yield return new WaitForSeconds(5f);
 
-        }
+        
     }
 }
