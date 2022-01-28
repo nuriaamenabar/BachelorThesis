@@ -15,10 +15,12 @@ public class FeedbackController : MonoBehaviour
     public bool VisualFeedback;
     public bool pulsated;
 
+
     public GameObject notifR;
     public GameObject notifL;
     private GameObject currentnotif;
     public AudioSource audioSource;
+    public bool JustChanged = true;
 
 
     private float time = 0f;
@@ -26,6 +28,7 @@ public class FeedbackController : MonoBehaviour
     public float VisualDuration = 2f;// For non pulsated one
     private bool last;
     private int numpulses = 5;
+    private float timetochange=0;
 
 
 
@@ -44,10 +47,11 @@ public class FeedbackController : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-
+        timetochange += Time.deltaTime;
         if (time >= InterpolationTime)
         {
             WhichChannel();
+            JustChanged = true;
 
             if (pulsated)
             {
@@ -120,6 +124,16 @@ public class FeedbackController : MonoBehaviour
             audioSource.panStereo = 1;
             currentnotif = notifR;
             last = true;
+        }
+
+    }
+
+    public void StopTimer()
+    {
+        if (JustChanged) {
+
+            timetochange = 0;
+            JustChanged = false;
         }
 
     }
