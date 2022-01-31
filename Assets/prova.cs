@@ -7,7 +7,7 @@ public class prova : MonoBehaviour
 {
     public TrajectoryPlannerUr5 trajplan;
     private float Timing = 0f;
-    public float interpolationPeriod = 3f;
+    public float interpolationPeriod = 1f;
     private int i = 0;
     public GameObject[] TargetArray;
     public GameObject Greenplacement;

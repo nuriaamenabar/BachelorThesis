@@ -11,6 +11,8 @@ public class Physicsbutton : MonoBehaviour
     private bool _isPressed;
     private Vector3 _startPos;
     private ConfigurableJoint _joint;
+    public int ButtonNumber;
+    public int justpushed;
 
     public UnityEvent onPressed, onReleased;
 
@@ -43,6 +45,8 @@ public class Physicsbutton : MonoBehaviour
         //Aqui ficar aqccio que vull que passi quan estigui presionat
         _isPressed = true;
         onPressed.Invoke();
+        justpushed = ButtonNumber;
+
         Debug.Log("Pressed");
     }
 

@@ -19,7 +19,7 @@ public class FeedbackController : MonoBehaviour
 
 
     public GameObject notifR;
-    public GameObject notifL;
+    //public GameObject notifL;
     private GameObject currentnotif;
     public GameObject Uduino;
     public AudioSource audioSource;
@@ -42,9 +42,10 @@ public class FeedbackController : MonoBehaviour
     void Start()
     {
         notifR.SetActive(false);
-        notifL.SetActive(false);
+        //notifL.SetActive(false);
         last = false;
-    
+        audioSource.panStereo = 1;
+
     }
 
     // Update is called once per frame
@@ -54,10 +55,10 @@ public class FeedbackController : MonoBehaviour
         timetochange += Time.deltaTime;
         if (time >= InterpolationTime)
         {
-            //System.Random rd = new System.Random();
-            //int rand = rd.Next(30,60);
-            //InterpolationTime=rand;
-            WhichChannel();
+            System.Random rd = new System.Random();
+            int rand = rd.Next(30,60);
+            InterpolationTime=rand;
+            //WhichChannel();
             JustChanged = true;
 
             if (pulsated)
@@ -102,7 +103,7 @@ public class FeedbackController : MonoBehaviour
     IEnumerator AudioLoopPulse()
     {
         
-        WhichChannel();
+        //WhichChannel();
         for (int i = 1; i <= numpulses; i++)
         {
             audioSource.Play();
@@ -116,7 +117,7 @@ public class FeedbackController : MonoBehaviour
     IEnumerator VisualLoopPulse()
     {
         
-        WhichChannel();
+        //WhichChannel();
         for (int i = 1; i <= numpulses; i++)
         {
             currentnotif.SetActive(true);
@@ -129,22 +130,22 @@ public class FeedbackController : MonoBehaviour
     }
 
 
-    void WhichChannel()
-    {
-        if (last)
-        {
-            audioSource.panStereo = -1;
-            currentnotif = notifL;
-            last = false;
-        }
-        else
-        {
-            audioSource.panStereo = 1;
-            currentnotif = notifR;
-            last = true;
-        }
+    //void WhichChannel()
+    //{
+    //    if (last)
+    //    {
+    //        audioSource.panStereo = -1;
+    //        currentnotif = notifL;
+    //        last = false;
+    //    }
+    //    else
+    //    {
+    //        audioSource.panStereo = 1;
+    //        currentnotif = notifR;
+    //        last = true;
+    //    }
 
-    }
+    //}
 
     public void StopTimer()
     {
