@@ -19,7 +19,8 @@ public class Lookray : MonoBehaviour
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)){ print("I'm looking at " + hit.transform.name);
-            if (hit.transform.name == "Button task") inbutton = true;
+            if (hit.transform.name == "button task") { inbutton = true; inrobot = false; }
+            if (hit.transform.name == "robot task") { inbutton = false; inrobot = true; }
         }
        // if (hit.transform.name == "button task") inbutton = true;
 
