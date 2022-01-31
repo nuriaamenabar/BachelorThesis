@@ -34,10 +34,6 @@ public class FeedbackController : MonoBehaviour
     private float timetochange=0;
 
 
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -147,15 +143,7 @@ public class FeedbackController : MonoBehaviour
 
     //}
 
-    public void StopTimer()
-    {
-        if (JustChanged) {
-
-            timetochange = 0;
-            JustChanged = false;
-        }
-
-    }
+  
 
 }
 

@@ -153,7 +153,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076542296}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 6169484}
   m_Layer: 0
   m_Name: button (9)
-  m_TagString: Untagged
+  m_TagString: 9
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -599,12 +599,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
+  ButtonNumber: 0
+  justpushed: 0
   onPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1985308841}
-        m_TargetAssemblyTypeName: ChangePannels, Assembly-CSharp
-        m_MethodName: Change
+      - m_Target: {fileID: 1213556949}
+        m_TargetAssemblyTypeName: FeedbackController, Assembly-CSharp
+        m_MethodName: StopTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1023,7 +1025,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1657,7 +1659,7 @@ GameObject:
   - component: {fileID: 142172672}
   m_Layer: 0
   m_Name: button (4)
-  m_TagString: Untagged
+  m_TagString: 4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1768,6 +1770,11 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148861694}
   m_Enabled: 0
+--- !u!4 &148861696 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+  m_PrefabInstance: {fileID: 1058311506}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &151275655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8165712705512708639, guid: d794ba90d30272745afbbd9de3d558e9, type: 3}
@@ -1787,7 +1794,7 @@ GameObject:
   - component: {fileID: 156179278}
   m_Layer: 0
   m_Name: Panel10
-  m_TagString: Untagged
+  m_TagString: 5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1880,7 +1887,7 @@ GameObject:
   - component: {fileID: 169803451}
   m_Layer: 0
   m_Name: button (5)
-  m_TagString: Untagged
+  m_TagString: 5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2106,12 +2113,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
+  ButtonNumber: 0
+  justpushed: 0
   onPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1985308841}
-        m_TargetAssemblyTypeName: ChangePannels, Assembly-CSharp
-        m_MethodName: Change
+      - m_Target: {fileID: 1213556949}
+        m_TargetAssemblyTypeName: FeedbackController, Assembly-CSharp
+        m_MethodName: StopTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2319,7 +2328,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2721,7 +2730,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2851,7 +2860,7 @@ GameObject:
   - component: {fileID: 265665259}
   m_Layer: 0
   m_Name: Panel5
-  m_TagString: Untagged
+  m_TagString: 8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2998,7 +3007,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3087,7 +3096,7 @@ GameObject:
   - component: {fileID: 275337638}
   m_Layer: 0
   m_Name: Panel1
-  m_TagString: Untagged
+  m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3227,7 +3236,7 @@ GameObject:
   - component: {fileID: 284573064}
   m_Layer: 0
   m_Name: Panel4
-  m_TagString: Untagged
+  m_TagString: 9
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3374,7 +3383,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3866,12 +3875,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
+  ButtonNumber: 0
+  justpushed: 0
   onPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1985308841}
-        m_TargetAssemblyTypeName: ChangePannels, Assembly-CSharp
-        m_MethodName: Change
+      - m_Target: {fileID: 1213556949}
+        m_TargetAssemblyTypeName: FeedbackController, Assembly-CSharp
+        m_MethodName: StopTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4151,7 +4162,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4251,7 +4262,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5374,7 +5385,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5516,7 +5527,7 @@ GameObject:
   - component: {fileID: 466123956}
   m_Layer: 0
   m_Name: button (0)
-  m_TagString: Untagged
+  m_TagString: 0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5602,7 +5613,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5695,7 +5706,7 @@ GameObject:
   - component: {fileID: 509682688}
   m_Layer: 0
   m_Name: Panel16
-  m_TagString: Untagged
+  m_TagString: 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5791,7 +5802,7 @@ GameObject:
   - component: {fileID: 516412031}
   m_Layer: 0
   m_Name: Panel17
-  m_TagString: Untagged
+  m_TagString: 5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6093,7 +6104,7 @@ GameObject:
   - component: {fileID: 542313453}
   m_Layer: 0
   m_Name: button (6)
-  m_TagString: Untagged
+  m_TagString: 6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6366,7 +6377,7 @@ GameObject:
   - component: {fileID: 579844434}
   m_Layer: 0
   m_Name: button (3)
-  m_TagString: Untagged
+  m_TagString: 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6779,7 +6790,7 @@ GameObject:
   - component: {fileID: 620265363}
   m_Layer: 0
   m_Name: Panel7
-  m_TagString: Untagged
+  m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7517,7 +7528,7 @@ GameObject:
   - component: {fileID: 679217574}
   m_Layer: 0
   m_Name: Panel20
-  m_TagString: Untagged
+  m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8144,7 +8155,7 @@ GameObject:
   - component: {fileID: 711776994}
   m_Layer: 0
   m_Name: Panel3
-  m_TagString: Untagged
+  m_TagString: 7
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8291,7 +8302,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8465,7 +8476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8509,6 +8520,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: ManagerState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: pins.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: pins.Array.data[0].prevPin
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: pins.Array.data[0].sendValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: pins.Array.data[0].currentPin
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: pins.Array.data[0].arduinoName
+      value: uduinoBoard
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: pins.Array.data[0].isEditorPin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: pins.Array.data[0].prevSendValue
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
@@ -9517,12 +9556,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
+  ButtonNumber: 0
+  justpushed: 0
   onPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1985308841}
-        m_TargetAssemblyTypeName: ChangePannels, Assembly-CSharp
-        m_MethodName: Change
+      - m_Target: {fileID: 1213556949}
+        m_TargetAssemblyTypeName: FeedbackController, Assembly-CSharp
+        m_MethodName: StopTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9863,7 +9904,7 @@ GameObject:
   - component: {fileID: 853109698}
   m_Layer: 0
   m_Name: button (8)
-  m_TagString: Untagged
+  m_TagString: 8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10840,7 +10881,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11409,7 +11450,7 @@ GameObject:
   - component: {fileID: 949455925}
   m_Layer: 0
   m_Name: Panel2
-  m_TagString: Untagged
+  m_TagString: 4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11641,7 +11682,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11736,7 +11777,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11831,7 +11872,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11945,7 +11986,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12075,7 +12116,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1511421916}
     m_Modifications:
     - target: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_Name
@@ -12087,7 +12128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalScale.x
@@ -12095,7 +12136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.9501187
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalScale.z
@@ -12103,15 +12144,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.344
+      value: 0.7759999
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.815
+      value: 0.97007126
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.29
+      value: -0.594
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12119,7 +12160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.y
@@ -12127,7 +12168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12272,7 +12313,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12372,7 +12413,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12542,7 +12583,7 @@ GameObject:
   - component: {fileID: 1086532770}
   m_Layer: 0
   m_Name: Panel12
-  m_TagString: Untagged
+  m_TagString: 6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14072,11 +14113,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioFeedback: 0
-  VisualFeedback: 0
-  EMSFeedback: 0
+  VisualFeedback: 1
+  EMSFeedback: 1
   pulsated: 0
   notifR: {fileID: 4511802}
-  notifL: {fileID: 2066042387}
   Uduino: {fileID: 734261516}
   audioSource: {fileID: 1213556948}
   JustChanged: 1
@@ -14121,7 +14161,7 @@ GameObject:
   - component: {fileID: 1238663428}
   m_Layer: 0
   m_Name: Panel13
-  m_TagString: Untagged
+  m_TagString: 6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14379,12 +14419,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
+  ButtonNumber: 0
+  justpushed: 0
   onPressed:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1985308841}
         m_TargetAssemblyTypeName: ChangePannels, Assembly-CSharp
         m_MethodName: Change
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1213556949}
+        m_TargetAssemblyTypeName: FeedbackController, Assembly-CSharp
+        m_MethodName: StopTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14642,7 +14696,7 @@ GameObject:
   - component: {fileID: 1251181273}
   m_Layer: 0
   m_Name: Panel19
-  m_TagString: Untagged
+  m_TagString: 9
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14785,7 +14839,7 @@ Transform:
   m_Children:
   - {fileID: 1445951698}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1256576790
 AudioSource:
@@ -14897,6 +14951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inrobot: 0
   inbutton: 0
+  JustChangedVision: 1
 --- !u!1 &1269817870
 GameObject:
   m_ObjectHideFlags: 0
@@ -14911,7 +14966,7 @@ GameObject:
   - component: {fileID: 1269817871}
   m_Layer: 0
   m_Name: Panel8
-  m_TagString: Untagged
+  m_TagString: 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15058,7 +15113,7 @@ GameObject:
   - component: {fileID: 1308034611}
   m_Layer: 0
   m_Name: button (1)
-  m_TagString: Untagged
+  m_TagString: 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15154,6 +15209,7 @@ Transform:
   - {fileID: 698673783}
   - {fileID: 223974230}
   - {fileID: 1058237057}
+  - {fileID: 2018185455}
   m_Father: {fileID: 1511421916}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15339,7 +15395,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15617,12 +15673,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
+  ButtonNumber: 0
+  justpushed: 0
   onPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1985308841}
-        m_TargetAssemblyTypeName: ChangePannels, Assembly-CSharp
-        m_MethodName: Change
+      - m_Target: {fileID: 1213556949}
+        m_TargetAssemblyTypeName: FeedbackController, Assembly-CSharp
+        m_MethodName: StopTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15918,7 +15976,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15967,6 +16025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inrobot: 0
   inbutton: 0
+  JustChangedVision: 1
 --- !u!1 &1350540184
 GameObject:
   m_ObjectHideFlags: 0
@@ -16280,7 +16339,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16452,7 +16511,7 @@ GameObject:
   - component: {fileID: 1406030562}
   m_Layer: 0
   m_Name: Panel18
-  m_TagString: Untagged
+  m_TagString: 7
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16592,7 +16651,7 @@ GameObject:
   - component: {fileID: 1431180470}
   m_Layer: 0
   m_Name: Panel15
-  m_TagString: Untagged
+  m_TagString: 9
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16845,12 +16904,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
+  ButtonNumber: 0
+  justpushed: 0
   onPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1985308841}
-        m_TargetAssemblyTypeName: ChangePannels, Assembly-CSharp
-        m_MethodName: Change
+      - m_Target: {fileID: 1213556949}
+        m_TargetAssemblyTypeName: FeedbackController, Assembly-CSharp
+        m_MethodName: StopTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17334,7 +17395,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17429,7 +17490,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17954,7 +18015,7 @@ GameObject:
   - component: {fileID: 1508671507}
   m_Layer: 0
   m_Name: Panel6
-  m_TagString: Untagged
+  m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18060,7 +18121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511421915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.12, y: -0.206, z: 0.884}
+  m_LocalPosition: {x: -2.12, y: -0.194, z: 0.884}
   m_LocalScale: {x: 1, y: 1.0525, z: 1}
   m_Children:
   - {fileID: 1503908218}
@@ -18068,6 +18129,7 @@ Transform:
   - {fileID: 752278208}
   - {fileID: 609576764}
   - {fileID: 1927352360}
+  - {fileID: 148861696}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18639,21 +18701,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
+  ButtonNumber: 0
+  justpushed: 0
   onPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1985308841}
-        m_TargetAssemblyTypeName: ChangePannels, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1213556949}
         m_TargetAssemblyTypeName: FeedbackController, Assembly-CSharp
         m_MethodName: StopTimer
@@ -19279,7 +19331,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19416,7 +19468,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19496,12 +19548,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
+  ButtonNumber: 1
+  justpushed: 0
   onPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1985308841}
-        m_TargetAssemblyTypeName: ChangePannels, Assembly-CSharp
-        m_MethodName: Change
+      - m_Target: {fileID: 1213556949}
+        m_TargetAssemblyTypeName: FeedbackController, Assembly-CSharp
+        m_MethodName: StopTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19709,7 +19763,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20118,7 +20172,7 @@ GameObject:
   - component: {fileID: 1769292161}
   m_Layer: 0
   m_Name: Panel11
-  m_TagString: Untagged
+  m_TagString: 4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20216,7 +20270,7 @@ GameObject:
   - component: {fileID: 1781831249}
   m_Layer: 0
   m_Name: button (7)
-  m_TagString: Untagged
+  m_TagString: 7
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20302,7 +20356,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20397,7 +20451,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20830,7 +20884,7 @@ GameObject:
   - component: {fileID: 1822698347}
   m_Layer: 0
   m_Name: button (2)
-  m_TagString: Untagged
+  m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21238,7 +21292,7 @@ GameObject:
   - component: {fileID: 1857115027}
   m_Layer: 0
   m_Name: Panel9
-  m_TagString: Untagged
+  m_TagString: 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21573,7 +21627,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22435,7 +22489,7 @@ GameObject:
   - component: {fileID: 2006415322}
   m_Layer: 0
   m_Name: Panel14
-  m_TagString: Untagged
+  m_TagString: 4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22610,6 +22664,101 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46398bc5d6905ad429a6d2d973afe002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2018185454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2018185455}
+  - component: {fileID: 2018185458}
+  - component: {fileID: 2018185457}
+  - component: {fileID: 2018185456}
+  m_Layer: 6
+  m_Name: Cube (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2018185455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018185454}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1.142, y: -0.59000003, z: -0.531}
+  m_LocalScale: {x: 2.5187254, y: 1.5, z: 0.9228654}
+  m_Children: []
+  m_Father: {fileID: 1312440145}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!65 &2018185456
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018185454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2018185457
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018185454}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0eeeadf7702d6a044ab24f14523f7915, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2018185458
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018185454}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2029076718
 GameObject:
   m_ObjectHideFlags: 0
@@ -22929,81 +23078,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057448314}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2066042387
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2066042390}
-  - component: {fileID: 2066042389}
-  - component: {fileID: 2066042388}
-  m_Layer: 5
-  m_Name: Indicator L
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2066042388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066042387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.061853886, a: 0.5882353}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2066042389
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066042387}
-  m_CullTransparentMesh: 1
---- !u!224 &2066042390
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066042387}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2076542296}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: -4.0000076}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2076542295
 GameObject:
   m_ObjectHideFlags: 0
@@ -23035,7 +23109,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 2066042390}
   - {fileID: 4511803}
   m_Father: {fileID: 1213556950}
   m_RootOrder: 0
@@ -23501,7 +23574,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6a57a6e08634824f884bc5bf392f36d, type: 2}
+  - {fileID: 2100000, guid: b3ac4ff00f72c53438ca8f9aae1a3049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23679,12 +23752,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 0.1
   deadZone: 0.025
+  ButtonNumber: 2
+  justpushed: 0
   onPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1985308841}
-        m_TargetAssemblyTypeName: ChangePannels, Assembly-CSharp
-        m_MethodName: Change
+      - m_Target: {fileID: 1213556949}
+        m_TargetAssemblyTypeName: FeedbackController, Assembly-CSharp
+        m_MethodName: StopTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23932,7 +24007,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c68e5b67298adb44599de11d609a2d71, type: 2}
+  - {fileID: 2100000, guid: e2cc1e4ce92d3fc4eb49db94d0336326, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

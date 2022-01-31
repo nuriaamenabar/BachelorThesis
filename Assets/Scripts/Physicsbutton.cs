@@ -11,9 +11,6 @@ public class Physicsbutton : MonoBehaviour
     private bool _isPressed;
     private Vector3 _startPos;
     private ConfigurableJoint _joint;
-    public int ButtonNumber;
-    public int justpushed;
-
     public UnityEvent onPressed, onReleased;
 
     void Start()

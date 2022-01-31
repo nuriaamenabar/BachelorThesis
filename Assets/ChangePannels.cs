@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class ChangePannels : MonoBehaviour
 {
     public GameObject[] PannelsArray;
+    public Physicsbutton physbut;
     private int i;
-    public int buttonspushed = 0;
+    public int score = 0;
     void Start()
     {
         i = 0;
@@ -25,5 +26,6 @@ public class ChangePannels : MonoBehaviour
         PannelsArray[i+1].SetActive(true);
         i = i + 1;
         Debug.Log(i);
+        if ((float)PanelsArray[i].tag == (float)physbut.just ) score++;s
     }
 }
