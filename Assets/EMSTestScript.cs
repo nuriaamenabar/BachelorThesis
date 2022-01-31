@@ -17,13 +17,13 @@ public class EMSTestScript : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime;
+        //time += Time.deltaTime;
 
-        if (time >= InterpolationTime)
-        {
-            StartCoroutine(BlinkLoop()); 
-            time = 0;
-        }
+        //if (time >= InterpolationTime)
+        //{
+        //    StartCoroutine(BlinkLoop()); 
+        //    time = 0;
+        //}
     }
 
     IEnumerator BlinkLoop()

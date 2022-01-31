@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using Uduino;
 using UnityEngine.UI;
 
 
@@ -13,12 +14,14 @@ public class FeedbackController : MonoBehaviour
 {
     public bool AudioFeedback;
     public bool VisualFeedback;
+    public bool EMSFeedback;
     public bool pulsated;
 
 
     public GameObject notifR;
     public GameObject notifL;
     private GameObject currentnotif;
+    public GameObject Uduino;
     public AudioSource audioSource;
     public bool JustChanged = true;
 
@@ -41,6 +44,7 @@ public class FeedbackController : MonoBehaviour
         notifR.SetActive(false);
         notifL.SetActive(false);
         last = false;
+    
     }
 
     // Update is called once per frame
@@ -65,6 +69,7 @@ public class FeedbackController : MonoBehaviour
             {
                 if (AudioFeedback) { audioSource.Play(); }
                 if (VisualFeedback) { StartCoroutine(VisualLoop()); }
+                if (EMSFeedback) { StartCoroutine(EMSLoop()); }
             }
             time = 0;
 
@@ -81,6 +86,16 @@ public class FeedbackController : MonoBehaviour
             currentnotif.SetActive(false);
 
        
+    }
+
+    IEnumerator EMSLoop()
+    {
+
+        UduinoManager.Instance.digitalWrite(6, State.HIGH);
+        yield return new WaitForSeconds(VisualDuration);
+        UduinoManager.Instance.digitalWrite(6, State.LOW);
+
+
     }
 
 
