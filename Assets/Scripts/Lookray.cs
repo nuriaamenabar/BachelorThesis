@@ -5,6 +5,8 @@ using UnityEngine;
 public class Lookray : MonoBehaviour
 {
     Camera cam;
+    public bool inrobot;
+    public bool inbutton;
 
     void Start()
     {
@@ -16,8 +18,13 @@ public class Lookray : MonoBehaviour
     {
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-            print("I'm looking at " + hit.transform.name);
+        if (Physics.Raycast(ray, out hit)){ print("I'm looking at " + hit.transform.name);
+            if (hit.transform.name == "Button task") inbutton = true;
+        }
+       // if (hit.transform.name == "button task") inbutton = true;
+
+
+
         else
             print("I'm looking at nothing!");
     }

@@ -13,6 +13,7 @@ public class FeedbackEvent : MonoBehaviour
 {
     public FeedbackController feedb;
     public prova prov;
+    public ChangePannels panels;
     public bool AudioFeedback;
     public bool VisualFeedback;
     public bool pulsated;
@@ -28,7 +29,7 @@ public class FeedbackEvent : MonoBehaviour
     private float time = 0f;
     public float InterpolationTime = 15f;
     public float VisualDuration = 2f;// For non pulsated one
-    private bool last;
+    private bool inbutton;
     private int numpulses = 5;
     private float timetochange = 0;
 
@@ -42,19 +43,22 @@ public class FeedbackEvent : MonoBehaviour
     {
         notifR.SetActive(false);
         notifL.SetActive(false);
-        last = false;
+        inbutton= true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (prov.cont>=4)
-        { 
-           
-                WhichChannel();
-                JustChanged = true;
+        if (prov.cont>=4 && inbutton == true)
+        {
 
-                if (pulsated)
+            audioSource.panStereo = 1;
+            currentnotif = notifR;
+            inbutton = false;
+            JustChanged = true;
+            panels.buttonspushed = 0;
+
+                if (pulsated )
                 {
                     if (AudioFeedback) { StartCoroutine(AudioLoopPulse()); }
                     if (VisualFeedback) { StartCoroutine(VisualLoopPulse()); }
@@ -65,9 +69,35 @@ public class FeedbackEvent : MonoBehaviour
                     if (VisualFeedback) { StartCoroutine(VisualLoop()); }
                 }
 
-            prov.cont = 0;
+            //prov.cont = -50;
             
          }
+
+        if (panels.buttonspushed>=4)
+        {
+            prov.cont = 0;
+            audioSource.panStereo = -1;
+            currentnotif = notifR;
+            inbutton = true;
+            JustChanged = true;
+
+            if (pulsated)
+            {
+                if (AudioFeedback) { StartCoroutine(AudioLoopPulse()); }
+                if (VisualFeedback) { StartCoroutine(VisualLoopPulse()); }
+            }
+            else
+            {
+                if (AudioFeedback) { audioSource.Play(); }
+                if (VisualFeedback) { StartCoroutine(VisualLoop()); }
+            }
+            panels.buttonspushed = -50;
+
+        }
+
+
+
+
     }
 
 
@@ -86,7 +116,7 @@ public class FeedbackEvent : MonoBehaviour
     IEnumerator AudioLoopPulse()
     {
 
-        WhichChannel();
+        //WhichChannel();
         for (int i = 1; i <= numpulses; i++)
         {
             audioSource.Play();
@@ -100,7 +130,7 @@ public class FeedbackEvent : MonoBehaviour
     IEnumerator VisualLoopPulse()
     {
 
-        WhichChannel();
+       // WhichChannel();
         for (int i = 1; i <= numpulses; i++)
         {
             currentnotif.SetActive(true);
@@ -110,24 +140,6 @@ public class FeedbackEvent : MonoBehaviour
 
 
         }
-    }
-
-
-    void WhichChannel()
-    {
-        if (last)
-        {
-            audioSource.panStereo = -1;
-            currentnotif = notifL;
-            last = false;
-        }
-        else
-        {
-            audioSource.panStereo = 1;
-            currentnotif = notifR;
-            last = true;
-        }
-
     }
 
     

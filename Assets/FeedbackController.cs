@@ -50,6 +50,9 @@ public class FeedbackController : MonoBehaviour
         timetochange += Time.deltaTime;
         if (time >= InterpolationTime)
         {
+            //System.Random rd = new System.Random();
+            //int rand = rd.Next(30,60);
+            //InterpolationTime=rand;
             WhichChannel();
             JustChanged = true;
 
