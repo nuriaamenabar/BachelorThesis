@@ -13,7 +13,6 @@ public class FeedbackEvent : MonoBehaviour
 {
     public FeedbackController feedb;
     public prova prov;
-    public ChangePannels panels;
     public bool AudioFeedback;
     public bool VisualFeedback;
     public bool pulsated;
@@ -56,7 +55,7 @@ public class FeedbackEvent : MonoBehaviour
             currentnotif = notifR;
             inbutton = false;
             JustChanged = true;
-            panels.buttonspushed = 0;
+          
 
                 if (pulsated )
                 {
@@ -69,32 +68,11 @@ public class FeedbackEvent : MonoBehaviour
                     if (VisualFeedback) { StartCoroutine(VisualLoop()); }
                 }
 
-            //prov.cont = -50;
+            prov.cont = 0;
             
          }
 
-        if (panels.buttonspushed>=4)
-        {
-            prov.cont = 0;
-            audioSource.panStereo = -1;
-            currentnotif = notifR;
-            inbutton = true;
-            JustChanged = true;
-
-            if (pulsated)
-            {
-                if (AudioFeedback) { StartCoroutine(AudioLoopPulse()); }
-                if (VisualFeedback) { StartCoroutine(VisualLoopPulse()); }
-            }
-            else
-            {
-                if (AudioFeedback) { audioSource.Play(); }
-                if (VisualFeedback) { StartCoroutine(VisualLoop()); }
-            }
-            panels.buttonspushed = -50;
-
-        }
-
+        
 
 
 

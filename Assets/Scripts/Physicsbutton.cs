@@ -42,8 +42,7 @@ public class Physicsbutton : MonoBehaviour
         //Aqui ficar aqccio que vull que passi quan estigui presionat
         _isPressed = true;
         onPressed.Invoke();
-        justpushed = ButtonNumber;
-
+   
         Debug.Log("Pressed");
     }
 
