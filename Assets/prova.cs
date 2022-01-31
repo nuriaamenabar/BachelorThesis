@@ -12,6 +12,7 @@ public class prova : MonoBehaviour
     public GameObject[] TargetArray;
     public GameObject Greenplacement;
     public GameObject Pinkplacement;
+    public int cont = 0;
     
 
 
@@ -48,6 +49,7 @@ public class prova : MonoBehaviour
                 }
 
                 i++;
+                cont++;
                 trajplan.PublishJoints();
                 
             }
