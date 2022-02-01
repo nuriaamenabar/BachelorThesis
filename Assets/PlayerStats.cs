@@ -54,16 +54,23 @@ public class PilotStats
     public string scene = "";
     public List<int> score = new List<int>();
     public int totalButton = 0;
+    public List<float> FeedbackToViewingPanels = new List<float>();
+    public List<float> FeedbackToViewingRobot = new List<float>();
+    public List<float> ViewingToPressing = new List<float>();
+    public List<float> FeedbackToPressing = new List<float>();
+    public List<float> interpolationFeedback = new List<float>();
+    public List<float> TimeViewingPanel = new List<float>();
+    public List<float> TimeViewingRobot = new List<float>();
+
+
+
+    public List<float> ViewingToGrabbing = new List<float>();
     public int mistakesGrabbables = 0;
     public int correctGrabbables = 0;
-    public List<float> ViewingToAction = new List<float>(); //From start viewing until doing first action
-    public List<float> FeedbackToAction = new List<float>(); //From start of feedback until doing first action
-    public List<float> FeedbackToViewing = new List<float>();
-    public List<float> interpolationFeedback = new List<float>();
+    public List<float> FeedbackToGrabbing = new List<float>(); 
     public List<float> ButtonToGrabbed = new List<float>();
     public List<float> GrabbedtoButton = new List<float>();
-    public List<float> TimingViewingButton = new List<float>();
-    public List<float> TimeViewingRobot = new List<float>();
+   
 
 
 

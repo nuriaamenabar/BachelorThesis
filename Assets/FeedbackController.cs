@@ -20,10 +20,10 @@ public class FeedbackController : MonoBehaviour
 
     public GameObject notifR;
     //public GameObject notifL;
-    private GameObject currentnotif;
+    
     public GameObject Uduino;
     public AudioSource audioSource;
-    public bool JustChanged = true;
+    
 
 
     private float time = 0f;
@@ -32,14 +32,16 @@ public class FeedbackController : MonoBehaviour
     private bool last;
     private int numpulses = 5;
     private float timetochange=0;
+    private float clock = 0f;
+    public float FeedbackActivatedIn;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        if (AudioFeedback) PlayerStats.pilotStats.scene = "Audio";
-        else if (VisualFeedback) PlayerStats.pilotStats.scene = "Visual";
-        else if (EMSFeedback) PlayerStats.pilotStats.scene = "Haptic";
+        if (AudioFeedback && !EMSFeedback && !VisualFeedback) PlayerStats.pilotStats.scene = "Audio";
+        else if (VisualFeedback&& !EMSFeedback && !AudioFeedback) PlayerStats.pilotStats.scene = "Visual";
+        else if (EMSFeedback && AudioFeedback && !VisualFeedback) PlayerStats.pilotStats.scene = "Haptic";
         else if (AudioFeedback && VisualFeedback && EMSFeedback) PlayerStats.pilotStats.scene = "Multimodal";
         else PlayerStats.pilotStats.scene = "NoFeedback";
 
@@ -54,14 +56,16 @@ public class FeedbackController : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
+        clock += Time.deltaTime;
         timetochange += Time.deltaTime;
         if (time >= InterpolationTime)
         {
+            FeedbackActivatedIn = clock;
+            PlayerStats.pilotStats.interpolationFeedback.Add(InterpolationTime);
             System.Random rd = new System.Random();
             int rand = rd.Next(30,60);
             InterpolationTime=rand;
-            //WhichChannel();
-            JustChanged = true;
+            
 
             if (pulsated)
             {
@@ -84,9 +88,9 @@ public class FeedbackController : MonoBehaviour
     {
        
      
-            currentnotif.SetActive(true);
+            notifR.SetActive(true);
             yield return new WaitForSeconds(VisualDuration);
-            currentnotif.SetActive(false);
+            notifR.SetActive(false);
 
        
     }
@@ -122,9 +126,9 @@ public class FeedbackController : MonoBehaviour
         //WhichChannel();
         for (int i = 1; i <= numpulses; i++)
         {
-            currentnotif.SetActive(true);
+            notifR.SetActive(true);
             yield return new WaitForSeconds(0.5f);
-            currentnotif.SetActive(false);
+            notifR.SetActive(false);
             yield return new WaitForSeconds(0.5f);
             
 

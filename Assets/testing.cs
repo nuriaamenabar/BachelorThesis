@@ -5,6 +5,7 @@ using UnityEngine;
 public class testing : MonoBehaviour
 {
     // Start is called before the first frame update
-  private void OnTriggerEnter(Collider other) { other.gameObject.SetActive(false); }
-       
+    private void OnTriggerEnter(Collider other)
+    { //other.gameObject.SetActive(false); }
+    }
 }
