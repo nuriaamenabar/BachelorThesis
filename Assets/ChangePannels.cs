@@ -32,6 +32,9 @@ public class ChangePannels : MonoBehaviour
     {
         TotalButtons++;
         if (PannelsArray[i].tag == button.tag) score++;
+        PlayerStats.pilotStats.score.Add(score);
+        PlayerStats.pilotStats.totalButton = TotalButtons;
+
         SetCountText();
         PannelsArray[i].SetActive(false);
         PannelsArray[i+1].SetActive(true);

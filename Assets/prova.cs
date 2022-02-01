@@ -7,7 +7,6 @@ public class prova : MonoBehaviour
 {
     public TrajectoryPlannerUr5 trajplan;
     private float Timing = 0f;
-    public float interpolationPeriod = 1f;
     private int i = 0;
     public GameObject[] TargetArray;
     public GameObject Greenplacement;
@@ -26,7 +25,7 @@ public class prova : MonoBehaviour
     void Update()
     {
         Timing += Time.deltaTime;
-        if (Timing >= interpolationPeriod)
+        if (Timing >= 1f)
         {
             if (trajplan.is_executing == false)
             {

@@ -37,6 +37,12 @@ public class FeedbackController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (AudioFeedback) PlayerStats.pilotStats.scene = "Audio";
+        else if (VisualFeedback) PlayerStats.pilotStats.scene = "Visual";
+        else if (EMSFeedback) PlayerStats.pilotStats.scene = "Haptic";
+        else if (AudioFeedback && VisualFeedback && EMSFeedback) PlayerStats.pilotStats.scene = "Multimodal";
+        else PlayerStats.pilotStats.scene = "NoFeedback";
+
         notifR.SetActive(false);
         //notifL.SetActive(false);
         last = false;
