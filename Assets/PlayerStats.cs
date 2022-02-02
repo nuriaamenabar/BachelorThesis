@@ -54,10 +54,9 @@ public class PilotStats
     public string scene = "";
     public List<int> score = new List<int>();
     public int totalButton = 0;
-    public List<float> FeedbackToViewingPanels = new List<float>();
-    public List<float> FeedbackToViewingRobot = new List<float>();
-    public List<float> ViewingToPressing = new List<float>();
-    public List<float> FeedbackToPressing = new List<float>();
+    public List<float> ChangeViewToPanels = new List<float>();
+    public List<float> ChangeViewToRobot = new List<float>();
+    public List<float> FirstButton = new List<float>();//First button pressed after changing view to the secondary task
     public List<float> interpolationFeedback = new List<float>();
     public List<float> TimeViewingPanel = new List<float>();
     public List<float> TimeViewingRobot = new List<float>();

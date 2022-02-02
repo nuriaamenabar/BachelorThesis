@@ -50,10 +50,8 @@ public class ChangePannels : MonoBehaviour
         Debug.Log(i);
         if (ray.JustChangedVisionToPannels) 
         { changedview = ray.TimeChangedVisionToPannels;
-          PlayerStats.pilotStats.ViewingToPressing.Add(clock-changedview ); 
+          PlayerStats.pilotStats.FirstButton.Add(clock); 
           ray.JustChangedVisionToPannels = false;
-          lastFeedback = feedb.FeedbackActivatedIn;
-          PlayerStats.pilotStats.FeedbackToPressing.Add(clock - lastFeedback);
 
         }
        

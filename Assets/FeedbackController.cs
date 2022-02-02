@@ -61,7 +61,7 @@ public class FeedbackController : MonoBehaviour
         if (time >= InterpolationTime)
         {
             FeedbackActivatedIn = clock;
-            PlayerStats.pilotStats.interpolationFeedback.Add(InterpolationTime);
+            PlayerStats.pilotStats.interpolationFeedback.Add(clock);
             System.Random rd = new System.Random();
             int rand = rd.Next(30,60);
             InterpolationTime=rand;

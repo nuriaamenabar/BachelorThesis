@@ -27,7 +27,7 @@ public class Lookray : MonoBehaviour
         clock += Time.deltaTime;
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit)){ //print("I'm looking at " + hit.transform.name);
+        if (Physics.Raycast(ray, out hit)){ print("I'm looking at " + hit.transform.name);
             lastFeedback = feedb.FeedbackActivatedIn;
             if (hit.transform.name == "button task") { 
                 inbutton = true;
@@ -36,7 +36,7 @@ public class Lookray : MonoBehaviour
                 {
                     JustChangedVisionToPannels = true;
                     TimeChangedVisionToPannels = clock;
-                    PlayerStats.pilotStats.FeedbackToViewingPanels.Add((clock-lastFeedback));
+                    PlayerStats.pilotStats.ChangeViewToPanels.Add((clock-lastFeedback));
                     PlayerStats.pilotStats.TimeViewingRobot.Add(TimeChangedVisionToRobot - TimeChangedVisionToPannels);
                 }
             }
@@ -45,7 +45,7 @@ public class Lookray : MonoBehaviour
                     JustChangedVisionToRobot = true;
                     TimeChangedVisionToRobot = clock;
                     PlayerStats.pilotStats.TimeViewingPanel.Add(TimeChangedVisionToPannels - TimeChangedVisionToRobot);
-                    PlayerStats.pilotStats.FeedbackToViewingRobot.Add(clock-lastFeedback); 
+                    PlayerStats.pilotStats.ChangeViewToRobot.Add(clock-lastFeedback); 
                 }
 
             }
