@@ -27,7 +27,7 @@ public class Lookray : MonoBehaviour
         clock += Time.deltaTime;
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit)){ print("I'm looking at " + hit.transform.name);
+        if (Physics.Raycast(ray, out hit)){ //print("I'm looking at " + hit.transform.name);
             lastFeedback = feedb.FeedbackActivatedIn;
             if (hit.transform.name == "button task") { 
                 inbutton = true;
