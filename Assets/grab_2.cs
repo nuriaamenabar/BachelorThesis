@@ -17,7 +17,7 @@ public class grab_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pr.cont >= 15)
+        if (pr.cont > 15)
         {
             grab2.SetActive(true);
             isactive = true;

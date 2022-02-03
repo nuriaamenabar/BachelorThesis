@@ -33,14 +33,14 @@ public class prova : MonoBehaviour
 
                 //int rand = rd.Next(100);
 
-                trajplan.Target = TargetArray[i];
-                if (TargetArray[i].tag == "Pink")
+                trajplan.Target = TargetArray[i]; 
+                if (TargetArray[i].tag == "PinkT" | TargetArray[i].tag == "PinkS")
                 {
                     //if (rand < 75) { trajplan.TargetPlacement = Pinkplacement; }
                     //else { trajplan.TargetPlacement = Greenplacement;
                     trajplan.TargetPlacement = Pinkplacement;
                 }
-                if (TargetArray[i].tag == "Green")
+                if (TargetArray[i].tag == "GreenT" | TargetArray[i].tag == "GreenS")
                 {
                     //if (rand < 75) { trajplan.TargetPlacement = Greenplacement; }
                     //else { trajplan.TargetPlacement = Pinkplacement;

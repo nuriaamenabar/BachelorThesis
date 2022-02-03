@@ -7,6 +7,7 @@ public class HandTrackingGrabber : OVRGrabber
 {
     private OVRHand hand;
     public float pinchTreshold = 0.7f;
+    public bool GrabbedSomething = false;
 
     protected override void Start()
     {
@@ -20,7 +21,8 @@ public class HandTrackingGrabber : OVRGrabber
         float pinchStrength = hand.GetFingerPinchStrength(OVRHand.HandFinger.Index);
         bool isPinching = pinchStrength > pinchTreshold;
         if (!m_grabbedObj && isPinching && m_grabCandidates.Count > 0)
-            GrabBegin();
+        { GrabBegin(); GrabbedSomething = true; } 
+
         else if (m_grabbedObj && !isPinching)
             GrabEnd();
 

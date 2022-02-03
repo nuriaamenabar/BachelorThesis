@@ -17,6 +17,17 @@ TagManager:
   - 7
   - 8
   - 9
+  - InBox
+  - GreenBox
+  - PinkBox
+  - GreenBoxTextured
+  - PinkBoxTextured
+  - GreenBoxSmooth
+  - PinkBoxSmooth
+  - GreenT
+  - GreenS
+  - PinkT
+  - PinkS
   layers:
   - Default
   - TransparentFX
