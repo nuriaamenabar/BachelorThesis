@@ -36,7 +36,7 @@ public class Lookray : MonoBehaviour
                 {
                     JustChangedVisionToPannels = true;
                     TimeChangedVisionToPannels = clock;
-                    PlayerStats.pilotStats.ChangeViewToPanels.Add((clock-lastFeedback));
+                    PlayerStats.pilotStats.ChangeViewToPanels.Add((clock));
                     PlayerStats.pilotStats.TimeViewingRobot.Add(TimeChangedVisionToRobot - TimeChangedVisionToPannels);
                 }
             }
@@ -45,7 +45,7 @@ public class Lookray : MonoBehaviour
                     JustChangedVisionToRobot = true;
                     TimeChangedVisionToRobot = clock;
                     PlayerStats.pilotStats.TimeViewingPanel.Add(TimeChangedVisionToPannels - TimeChangedVisionToRobot);
-                    PlayerStats.pilotStats.ChangeViewToRobot.Add(clock-lastFeedback); 
+                    PlayerStats.pilotStats.ChangeViewToRobot.Add(clock); 
                 }
 
             }
