@@ -33,7 +33,7 @@ public class PlayerStats : MonoBehaviour
        
         string statsJson = JsonUtility.ToJson(pilotStats);
         Debug.Log(Application.dataPath);
-        System.IO.File.WriteAllText(Application.dataPath + "/StudyResults/" + fileName, statsJson);
+        System.IO.File.WriteAllText(Application.dataPath + "/StudyResults/" + participant + "/" +fileName, statsJson);
 
     }
 
@@ -52,6 +52,7 @@ public class PilotStats
 {
     public string participant = "";
     public string scene = "";
+    public float startTime = 0;
     public List<int> score = new List<int>();
     public int totalButton = 0;
     public List<float> ChangeViewToPanels = new List<float>();
@@ -61,6 +62,8 @@ public class PilotStats
     public List<float> TimeViewingPanel = new List<float>();
     public List<float> TimeViewingRobot = new List<float>();
 
+    public List<int> CubesInGreenBoxWhenStartedLooking = new List<int>();
+    public List<int> CubesInPinkBoxWhenStartedLooking = new List<int>();
 
 
     public List<float> ViewingToGrabbing = new List<float>();

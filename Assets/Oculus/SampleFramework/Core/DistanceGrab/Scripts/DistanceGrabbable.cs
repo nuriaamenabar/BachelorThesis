@@ -18,12 +18,22 @@ namespace OculusSampleFramework
     public class DistanceGrabbable : OVRGrabbable
     {
         public string m_materialColorField;
+        public bool grabbed = false;
 
         GrabbableCrosshair m_crosshair;
         GrabManager m_crosshairManager;
         Renderer m_renderer;
         MaterialPropertyBlock m_mpb;
-  
+
+        //<summary>
+        void Update() 
+        {
+            if (isGrabbed) { grabbed = true; }
+        
+        }
+        // </summary>
+
+
 
         public bool InRange
         {

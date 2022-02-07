@@ -7,6 +7,7 @@ public class CubesInside : MonoBehaviour
     public WhereIsCube[] whereis;
     public int CubesInBox;
     public GameObject box;
+    public Lookray look;
 
     void Start()
     {
@@ -26,7 +27,18 @@ public class CubesInside : MonoBehaviour
             if (whereis[i].inGreenSmooth == true && box.tag == "GreenBoxSmooth") CubesInBox++;
             if (whereis[i].inPinkSmooth == true && box.tag == "PinkBoxSmooth") CubesInBox++;
 
+
         }
+
+        //if (look.JustChangedVisionToRobot = true) // Afegir que encara no ha agafat res
+        //{
+        //    if (box.tag=="GreenBox") PlayerStats.pilotStats.CubesInGreenBoxWhenStartedLooking.Add(CubesInBox);
+        //    if (box.tag == "GreenBox") PlayerStats.pilotStats.CubesInPinkBoxWhenStartedLooking.Add(CubesInBox);
+
+
+        //}
+        
+
 
     }
     
