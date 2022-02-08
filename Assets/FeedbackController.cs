@@ -27,7 +27,7 @@ public class FeedbackController : MonoBehaviour
 
 
     private float time = 0f;
-    public float InterpolationTime = 15f;
+    public float InterpolationTime = 30f;
     public float VisualDuration = 2f;// For non pulsated one
     private bool last;
     private int numpulses = 5;
