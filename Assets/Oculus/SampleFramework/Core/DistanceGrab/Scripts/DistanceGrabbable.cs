@@ -19,6 +19,9 @@ namespace OculusSampleFramework
     {
         public string m_materialColorField;
         public bool grabbed = false;
+        public float timegrabbed = 0f;
+        public Lookray look;
+        private float clock=0f;
 
         GrabbableCrosshair m_crosshair;
         GrabManager m_crosshairManager;
@@ -28,7 +31,8 @@ namespace OculusSampleFramework
         //<summary>
         void Update() 
         {
-            if (isGrabbed) { grabbed = true; }
+            clock += Time.deltaTime;
+            if (isGrabbed && look.JustChangedVisionToRobot) { PlayerStats.pilotStats.FirstGrabbed.Add(clock); ; look.JustChangedVisionToRobot=false; }
         
         }
         // </summary>

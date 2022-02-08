@@ -61,18 +61,16 @@ public class PilotStats
     public List<float> interpolationFeedback = new List<float>();
     public List<float> TimeViewingPanel = new List<float>();
     public List<float> TimeViewingRobot = new List<float>();
-
+    public List<float> FirstGrabbed = new List<float>();//Firstobject grabbed after changing view to the primary task
     public List<int> CubesInGreenBoxWhenStartedLooking = new List<int>();
     public List<int> CubesInPinkBoxWhenStartedLooking = new List<int>();
+    public List<int> mistakesClass = new List<int>();
+    public List<int> correctClass = new List<int>();
+
+    
 
 
-    public List<float> ViewingToGrabbing = new List<float>();
-    public int mistakesGrabbables = 0;
-    public int correctGrabbables = 0;
-    public List<float> FeedbackToGrabbing = new List<float>(); 
-    public List<float> ButtonToGrabbed = new List<float>();
-    public List<float> GrabbedtoButton = new List<float>();
-   
+
 
 
 

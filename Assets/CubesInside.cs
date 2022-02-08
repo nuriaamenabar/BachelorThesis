@@ -8,6 +8,8 @@ public class CubesInside : MonoBehaviour
     public int CubesInBox;
     public GameObject box;
     public Lookray look;
+    public int CubesCorrectlyClass;
+    public int CubesWronglyClass;
 
     void Start()
     {
@@ -17,6 +19,7 @@ public class CubesInside : MonoBehaviour
     void Update()
     {
         CubesInBox = 0;
+
         for (int i = 0; i < whereis.Length; i++) 
         {
            
@@ -30,14 +33,29 @@ public class CubesInside : MonoBehaviour
 
         }
 
-        //if (look.JustChangedVisionToRobot = true) // Afegir que encara no ha agafat res
-        //{
-        //    if (box.tag=="GreenBox") PlayerStats.pilotStats.CubesInGreenBoxWhenStartedLooking.Add(CubesInBox);
-        //    if (box.tag == "GreenBox") PlayerStats.pilotStats.CubesInPinkBoxWhenStartedLooking.Add(CubesInBox);
+        if (look.JustChangedVisionToRobot_count1 == true | look.JustChangedVisionToRobot_count2 == true) // Afegir que encara no ha agafat res
+        {
+            if (box.tag == "GreenBox") { PlayerStats.pilotStats.CubesInGreenBoxWhenStartedLooking.Add(CubesInBox); look.JustChangedVisionToRobot_count1 = false; } 
+            if (box.tag == "PinkBox") { PlayerStats.pilotStats.CubesInPinkBoxWhenStartedLooking.Add(CubesInBox); look.JustChangedVisionToRobot_count2 = false; }
+    
 
+        }
+        if (look.JustChangedVisionToPannels_count == true) // Afegir que encara no ha agafat res
+        {
+            for (int i = 0; i < whereis.Length; i++)
+            {
 
-        //}
-        
+                if (whereis[i].correctClas == true) CubesCorrectlyClass++;
+                if (whereis[i].wrongClas == true) CubesWronglyClass++;
+            }
+            look.JustChangedVisionToPannels_count = false;
+            PlayerStats.pilotStats.correctClass.Add(CubesCorrectlyClass);
+            PlayerStats.pilotStats.mistakesClass.Add(CubesWronglyClass);
+
+            CubesCorrectlyClass = 0;
+            CubesWronglyClass = 0;
+        }
+
 
 
     }

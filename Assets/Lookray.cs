@@ -9,12 +9,17 @@ public class Lookray : MonoBehaviour
     public bool inbutton;
     private bool last = true;
     public bool JustChangedVisionToPannels = true;
-    public bool JustChangedVisionToRobot = true;
+    public bool JustChangedVisionToRobot = false;
+    public bool JustChangedVisionToRobot_count1 = false;
+    public bool JustChangedVisionToRobot_count2 = false;
+    public bool JustChangedVisionToPannels_count = true;
+
     private float clock = 0f;
     private float lastFeedback;
     public FeedbackController feedb;
     public float TimeChangedVisionToPannels;
     public float TimeChangedVisionToRobot;
+
 
     void Start()
     {
@@ -35,21 +40,28 @@ public class Lookray : MonoBehaviour
                 if (last != inbutton)
                 {
                     JustChangedVisionToPannels = true;
+                    JustChangedVisionToPannels_count = true; //assistant variable only to help count cubes
                     TimeChangedVisionToPannels = clock;
                     PlayerStats.pilotStats.ChangeViewToPanels.Add((clock));
                     PlayerStats.pilotStats.TimeViewingRobot.Add(TimeChangedVisionToRobot - TimeChangedVisionToPannels);
+                    last = inbutton;
                 }
             }
-            if (hit.transform.name == "robot task") { inbutton = false; inrobot = true;
+            if (hit.transform.name == "robot task") {
+                inbutton = false; 
+                inrobot = true;
                 if (last != inbutton) { 
                     JustChangedVisionToRobot = true;
+                    JustChangedVisionToRobot_count1 = true;
+                    JustChangedVisionToRobot_count2 = true;
                     TimeChangedVisionToRobot = clock;
                     PlayerStats.pilotStats.TimeViewingPanel.Add(TimeChangedVisionToPannels - TimeChangedVisionToRobot);
-                    PlayerStats.pilotStats.ChangeViewToRobot.Add(clock); 
+                    PlayerStats.pilotStats.ChangeViewToRobot.Add(clock);
+                    last = inbutton;
                 }
 
             }
-            last = inbutton;
+            
         }
        // if (hit.transform.name == "button task") inbutton = true;
 
