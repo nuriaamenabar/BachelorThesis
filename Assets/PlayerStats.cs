@@ -57,11 +57,14 @@ public class PilotStats
     public int totalButton = 0;
     public List<float> ChangeViewToPanels = new List<float>();
     public List<float> ChangeViewToRobot = new List<float>();
+
     public List<float> FirstButton = new List<float>();//First button pressed after changing view to the secondary task
+    public List<float> FirstGrabbed = new List<float>();
+
     public List<float> interpolationFeedback = new List<float>();
     public List<float> TimeViewingPanel = new List<float>();
     public List<float> TimeViewingRobot = new List<float>();
-    public List<float> FirstGrabbed = new List<float>();//Firstobject grabbed after changing view to the primary task
+ 
     public List<int> CubesInGreenBoxWhenStartedLooking = new List<int>();
     public List<int> CubesInPinkBoxWhenStartedLooking = new List<int>();
     public List<int> mistakesClass = new List<int>();
