@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/2d classification.unity
+    path: Assets/Scenes/USeless/saving.unity
     guid: 1670564b2ea01a241beaf47d61d230d1
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 2acc8ace7cbfbe8459092165383037b3, type: 2}

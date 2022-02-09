@@ -18,25 +18,23 @@ public class FeedbackController : MonoBehaviour
     public bool pulsated;
 
 
-    public GameObject notifR;
-    //public GameObject notifL;
-    
+    public GameObject notifGreen;
+    public GameObject notifPink;
+    public prova prov;
+    private GameObject currentnotif;
     public GameObject Uduino;
     public AudioSource audioSource;
     
 
 
-    private float time = 0f;
-    public float InterpolationTime = 30f;
+   
     public float VisualDuration = 2f;// For non pulsated one
-    private bool last;
     private int numpulses = 5;
     private float timetochange=0;
     private float clock = 0f;
-    public float FeedbackActivatedIn;
+    public float FeedbackActivatedIn=0;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         if (AudioFeedback && !EMSFeedback && !VisualFeedback) PlayerStats.pilotStats.scene = "Audio";
@@ -45,27 +43,29 @@ public class FeedbackController : MonoBehaviour
         else if (AudioFeedback && VisualFeedback && EMSFeedback) PlayerStats.pilotStats.scene = "Multimodal";
         else PlayerStats.pilotStats.scene = "NoFeedback";
 
-        notifR.SetActive(false);
-        //notifL.SetActive(false);
-        last = false;
+        notifGreen.SetActive(false);
+        notifPink.SetActive(false);
+
+        
         audioSource.panStereo = 1;
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
         clock += Time.deltaTime;
-        timetochange += Time.deltaTime;
-        if (time >= InterpolationTime)
+
+        if ((prov.pinkfull  || prov.greenfull) && (clock-FeedbackActivatedIn)>5) // if a box is full and the last notification has been over 5 secs (so that notifications while you havent acted dont overlap)
         {
+            print("INSIDE");
+            if (prov.pinkfull) currentnotif = notifPink;
+            if (prov.greenfull) currentnotif = notifGreen;
             FeedbackActivatedIn = clock;
             PlayerStats.pilotStats.interpolationFeedback.Add(clock);
             System.Random rd = new System.Random();
-            int rand = rd.Next(30,60);
-            InterpolationTime=rand;
-            
+            //int rand = rd.Next(30, 60);
+            //InterpolationTime = rand;
+
 
             if (pulsated)
             {
@@ -78,63 +78,51 @@ public class FeedbackController : MonoBehaviour
                 if (VisualFeedback) { StartCoroutine(VisualLoop()); }
                 if (EMSFeedback) { StartCoroutine(EMSLoop()); }
             }
-            time = 0;
-
+            //time = 0;
         }
+        
+           
+
     }
+    
+
 
 
     IEnumerator VisualLoop()
     {
-       
-     
-            notifR.SetActive(true);
-            yield return new WaitForSeconds(VisualDuration);
-            notifR.SetActive(false);
-
-       
+        currentnotif.SetActive(true);
+        yield return new WaitForSeconds(VisualDuration);
+        currentnotif.SetActive(false);
     }
 
     IEnumerator EMSLoop()
     {
-
         UduinoManager.Instance.digitalWrite(6, State.HIGH);
         yield return new WaitForSeconds(VisualDuration);
         UduinoManager.Instance.digitalWrite(6, State.LOW);
-
-
     }
 
 
     IEnumerator AudioLoopPulse()
     {
-        
-        //WhichChannel();
         for (int i = 1; i <= numpulses; i++)
         {
             audioSource.Play();
             yield return new WaitForSeconds(1);
-        }
-
-
-        
+        }   
     }
 
     IEnumerator VisualLoopPulse()
     {
-        
-        //WhichChannel();
         for (int i = 1; i <= numpulses; i++)
         {
-            notifR.SetActive(true);
+            currentnotif.SetActive(true);
             yield return new WaitForSeconds(0.5f);
-            notifR.SetActive(false);
+            currentnotif.SetActive(false);
             yield return new WaitForSeconds(0.5f);
-            
-
-            }
+        }
     }
-
+}
 
     //void WhichChannel()
     //{
@@ -155,7 +143,7 @@ public class FeedbackController : MonoBehaviour
 
 
 
-}
+
 
 
 
@@ -293,4 +281,37 @@ public class FeedbackController : MonoBehaviour
 
 
 
+//}
+
+
+
+
+//void Update()
+//{
+//    time += Time.deltaTime;
+//    clock += Time.deltaTime;
+//    timetochange += Time.deltaTime;
+//    if (time >= InterpolationTime)
+//    {
+//        FeedbackActivatedIn = clock;
+//        PlayerStats.pilotStats.interpolationFeedback.Add(clock);
+//        System.Random rd = new System.Random();
+//        int rand = rd.Next(30, 60);
+//        InterpolationTime = rand;
+
+
+//        if (pulsated)
+//        {
+//            if (AudioFeedback) { StartCoroutine(AudioLoopPulse()); }
+//            if (VisualFeedback) { StartCoroutine(VisualLoopPulse()); }
+//        }
+//        else
+//        {
+//            if (AudioFeedback) { audioSource.Play(); }
+//            if (VisualFeedback) { StartCoroutine(VisualLoop()); }
+//            if (EMSFeedback) { StartCoroutine(EMSLoop()); }
+//        }
+//        time = 0;
+
+//    }
 //}
