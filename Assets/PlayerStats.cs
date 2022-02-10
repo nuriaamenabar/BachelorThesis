@@ -52,6 +52,7 @@ public class PilotStats
 {
     public string participant = "";
     public string scene = "";
+    public string surveilance = "";
     public float startTime = 0;
     public List<int> score = new List<int>();
     public int totalButton = 0;
@@ -75,7 +76,6 @@ public class PilotStats
     public List<float> GreenBoxEmptied = new List<float>();
     public List<float> PinkBoxEmptied = new List<float>();
     
-    public List<int> CubesInPinkBoxWhenStartedLooking = new List<int>();
 
 
 

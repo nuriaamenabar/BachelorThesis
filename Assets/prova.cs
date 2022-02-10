@@ -8,7 +8,7 @@ using TMPro;
 public class prova : MonoBehaviour
 {
     public TrajectoryPlannerUr5 trajplan;
-    private float Timing = 0f;
+    private float clock = 0f;
     private int i = 0;
     public GameObject[] TargetArray;
     public GameObject Greenplacement;
@@ -22,21 +22,26 @@ public class prova : MonoBehaviour
     public TextMeshProUGUI UIGreen;
     public TextMeshProUGUI UIPink;
 
+
+
+    private bool justemptiedg=true;
+    private bool justemptiedp=true;
+  
     void Start() { SetCountText(); }
 
 
     void Update()
     {
-        Timing += Time.deltaTime;
+        clock += Time.deltaTime;
         SetCountText();
-        if (Timing >= 1f)// Waiting a second to start otherwise it gets a bit crazy
+        if (clock >= 1f)// Waiting a second to start otherwise it gets a bit crazy
         {
-           
+
             //Checks if any of the boxes are full. If they are full it checks if they have already been emptied completely
-            if (green.CubesInBox >= 5) greenfull =  true;
-            if (pink.CubesInBox >= 5) pinkfull = true;
-            if (greenfull && green.CubesInBox ==0) { greenfull = false; }
-            if (pinkfull && pink.CubesInBox ==0) { pinkfull = false; }
+            if (green.CubesInBox >= 5 && justemptiedg) { greenfull = true; justemptiedg=false; PlayerStats.pilotStats.GreenBoxFilled.Add(clock); }
+            if (pink.CubesInBox >= 5 && justemptiedp) { pinkfull = true;  justemptiedp = false; PlayerStats.pilotStats.PinkBoxFilled.Add(clock); }
+            if (greenfull && green.CubesInBox ==0 && justemptiedg ==false ) { greenfull = false; justemptiedg = true; PlayerStats.pilotStats.GreenBoxEmptied.Add(clock); }
+            if (pinkfull && pink.CubesInBox ==0 && justemptiedp == false) { pinkfull = false; justemptiedp = true; PlayerStats.pilotStats.PinkBoxEmptied.Add(clock); }
 
 
             //If the robot is not executing the previous trajectory and none of the boxes are full,

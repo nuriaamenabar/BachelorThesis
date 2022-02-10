@@ -4,52 +4,56 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/*
+ * Script that changes the math pannels once one button is pushed. Contains function "Change", called by each button when pushed (onPush())
+ * Tracks scores, time when a button has been pushed and total buttons pushed. Component of the "ButtonsChangePannels" GameObject
+ */ 
 public class ChangePannels : MonoBehaviour
 {
-    public GameObject[] PannelsArray;
-    public Physicsbutton physbut;
-    private int i;
-    public int score = 0;
-    public TextMeshProUGUI countText;
-    public int TotalButtons;
-    public Lookray ray;
-    private float clock = 0;
-    private float changedview;
-    private float lastFeedback;
-    public FeedbackController feedb;
+    public GameObject[] PannelsArray; //Array containing all the panels. 
+    public Physicsbutton physbut;//When added to a button´s onPush, you have to put the corresponding button (See Button´s onpush), to track the tag of the button that has been pushed 
+    private int i=0;  // counter of which panel is active
+    public int score = 0; //Track of the score
+    public TextMeshProUGUI countText; // UI where the score will be rendered
+    public int TotalButtons; //Number of times a button has been pushed (correct or incorrect)
+    public Lookray ray; //Ray element that tracks where the participant is watching (for logging things), attached to centereyeanchor frpm OVRCamera
+    private float clock = 0; 
+    
+    
 
     void Start()
     {
-        SetCountText();
-        i = 0;
-        foreach(GameObject Pannel in PannelsArray)
+        SetCountText(); //Sets score UI text to actual score
+
+        foreach(GameObject Pannel in PannelsArray)//Unactivates all the panels except for the first one in the array
         {
             Pannel.SetActive(false);
         }
         PannelsArray[0].SetActive(true);       
     }
-    void Update() { clock += Time.deltaTime; }
+    
+    void Update() { clock += Time.deltaTime; }//to keep track of time
 
-    void SetCountText()
+    void SetCountText()//Sets score UI text to actual score
     {
         countText.text =  score.ToString();
 
     }
 
-    public void Change(GameObject button)
+    public void Change(GameObject button)//Called each time a button is pushed
     {
-        TotalButtons++;
-        if (PannelsArray[i].tag == button.tag) score++;
-        PlayerStats.pilotStats.score.Add(score);
-        PlayerStats.pilotStats.totalButton = TotalButtons;
+        TotalButtons++; 
+        if (PannelsArray[i].tag == button.tag) score++;//If the tag of the button (number) is equal to the tag of the panel (solution of math problem)-->Correct answer
+        PlayerStats.pilotStats.score.Add(score);//Add score to list
+        PlayerStats.pilotStats.totalButton = TotalButtons;  //Update number of total buttons
 
-        SetCountText();
-        PannelsArray[i].SetActive(false);
+        SetCountText(); //Update score
+        PannelsArray[i].SetActive(false);//Unactivate already solved pannel and activate next one
         PannelsArray[i+1].SetActive(true);
-        i = i + 1;
-        Debug.Log(i);
-        if (ray.JustChangedVisionToPannels) 
-        { changedview = ray.TimeChangedVisionToPannels;
+        i++;
+   
+        if (ray.JustChangedVisionToPannels) //In case you have just changed your view to the pannel and it´s the first button pushed, log time (too keep log of time between seeing and acting)
+        {
           PlayerStats.pilotStats.FirstButton.Add(clock); 
           ray.JustChangedVisionToPannels = false;
 

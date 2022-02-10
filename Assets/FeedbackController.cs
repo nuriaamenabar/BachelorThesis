@@ -16,10 +16,12 @@ public class FeedbackController : MonoBehaviour
     public bool VisualFeedback;
     public bool EMSFeedback;
     public bool pulsated;
+    public bool surveilance;
 
 
     public GameObject notifGreen;
     public GameObject notifPink;
+    public GameObject surveilanceObj;
     public prova prov;
     private GameObject currentnotif;
     public GameObject Uduino;
@@ -43,6 +45,11 @@ public class FeedbackController : MonoBehaviour
         else if (AudioFeedback && VisualFeedback && EMSFeedback) PlayerStats.pilotStats.scene = "Multimodal";
         else if (AudioFeedback && VisualFeedback) PlayerStats.pilotStats.scene = "Audio and visual";
         else PlayerStats.pilotStats.scene = "NoFeedback";
+
+
+        if (surveilance) { PlayerStats.pilotStats.surveilance = "yes"; }
+        else { PlayerStats.pilotStats.surveilance = "no"; surveilanceObj.SetActive(false); } 
+
 
         notifGreen.SetActive(false);
         notifPink.SetActive(false);
