@@ -7,50 +7,62 @@ using UnityEngine.EventSystems;
 using Uduino;
 using UnityEngine.UI;
 
-
+/*
+ * This script controlls all the feedback modalities and also the surveilance camera. You can activate/desactivate the
+ * different modalities from the unity interface.
+ * 
+ * It also keeps log of when the feedback has been activated.
+ * 
+ * Feedback is activated if: One of the boxes is full && Last feedback was given over 5 seconds ago (no overlapping) && participant not looking at the robot
+ * 
+ * 
+ */
 
 [RequireComponent(typeof(AudioSource))]
 public class FeedbackController : MonoBehaviour
 {
+    //Bools to decide from the unity interface which feedback should be activated and if there큦 surveilance or not.
     public bool AudioFeedback;
     public bool VisualFeedback;
     public bool EMSFeedback;
     public bool pulsated;
     public bool surveilance;
 
-
+    //All of the feedbacks' gameobjects, that the script will activate/deactivate when necessary
     public GameObject notifGreen;
     public GameObject notifPink;
     public GameObject surveilanceObj;
-    public prova prov;
-    private GameObject currentnotif;
     public GameObject Uduino;
     public AudioSource audioSource;
-    public Lookray look;
+
+    //Auxiliary objects to help log and check when feedback is necessary
+    public prova prov;//Robot큦 automatic publisher script
+    public Lookray look;//To check where participant is looking, from OVRCameraRig큦 CenterEyeAnchor
+    private GameObject currentnotif;//Auxiliary 
+    public float FeedbackActivatedIn = 0;//Auxiliary
+    private float clock = 0f
     
-
-
-   
-    public float VisualDuration = 2f;// For non pulsated one
-    private int numpulses = 5;
-   
-    private float clock = 0f;
-    public float FeedbackActivatedIn=0;
+    //Parameters of the feedback it큦elf
+    private float VisualDuration = 2f;// For non pulsated visual feedback, how long does the visual feedback last
+    private int numpulses = 5//For pulsated one, how many pulses per feedback
+    
+    
 
 
     void Start()
     {
+        //Checks which feedback modality to log it
         if (AudioFeedback) PlayerStats.pilotStats.scene.Add("Audio");
         if (VisualFeedback) PlayerStats.pilotStats.scene.Add("Visual");
         if (EMSFeedback) PlayerStats.pilotStats.scene.Add("Haptic");
+
+        //Checks if surveilance is active and activates the gameobject if it큦 the case, also logs if it is.
         if (surveilance) { PlayerStats.pilotStats.surveilance = "yes"; surveilanceObj.SetActive(true); }
         else { PlayerStats.pilotStats.surveilance = "no"; surveilanceObj.SetActive(false); } 
 
-
+        //Desactivates notifications (until feedback has to be activated) and sets the stereo to one so audio comes dfrom right side
         notifGreen.SetActive(false);
         notifPink.SetActive(false);
-
-        
         audioSource.panStereo = 1;
 
     }
@@ -59,17 +71,15 @@ public class FeedbackController : MonoBehaviour
     {
         clock += Time.deltaTime;
 
-        if ((prov.pinkfull  || prov.greenfull) && (clock-FeedbackActivatedIn)>5 && look.inrobot==false ) // if a box is full and the last notification has been over 5 secs (so that notifications while you havent acted dont overlap)
+        // if a box is full and the last notification has been over 5 secs (so that notifications while you havent acted dont overlap), give feedback. Feedback stops when u look at robot
+        if ((prov.pinkfull  || prov.greenfull) && (clock-FeedbackActivatedIn)>5 && look.inrobot==false )
         {
-            print("INSIDE");
             if (prov.pinkfull) currentnotif = notifPink;
-            if (prov.greenfull) currentnotif = notifGreen;
+            if (prov.greenfull) currentnotif = notifGreen;//Sets which notification has to be activated depending on which box is full
             FeedbackActivatedIn = clock;
-            PlayerStats.pilotStats.Feedback.Add(clock);
-            System.Random rd = new System.Random();
-            
-
-
+            PlayerStats.pilotStats.Feedback.Add(clock);//logs when its been activated
+        
+            //Depending on the feedback that has been chosen in unity, activates the corresponding coroutine  
             if (pulsated)
             {
                 if (AudioFeedback) { StartCoroutine(AudioLoopPulse()); }
