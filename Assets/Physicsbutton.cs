@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
+//Common script for buttons, triggers the desired event when it´s pushed. Nothing needs to be modified
+
+
 public class Physicsbutton : MonoBehaviour
 {
     [SerializeField] private float threshold = .1f;

@@ -2,9 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Script attached to every cube/grabbable, it checks where the grabbbableis
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+
 public class WhereIsCube : MonoBehaviour
 {
-    public bool inGreenBox=false;
+    public bool inGreenBox=false;//All possibilities of where cube can be. In the beggining, nowhere
     public bool inPinkBox = false;
     public bool inPinkSmooth = false;
     public bool inPinkText = false;
@@ -48,9 +60,12 @@ public class WhereIsCube : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("GreenBox") && inGreenBox == false) { inGreenBox = true; }
+        //The location of the cube is updated everytime it collides with something. Then it stops being in th elast place and it is in the next one
+
+        if (other.gameObject.CompareTag("GreenBox") && inGreenBox == false) { inGreenBox = true; }//Two main boxes (classified by robot)
         if (other.gameObject.CompareTag("PinkBox") && inPinkBox == false) { inPinkBox = true; }
-        // if (){inGrabbed=tre, la resta false}
+        
+        //Once the cube is classified (IT HAS TO BE CLASSIFIED), it stops being in green/pink and it´s in the correspondant classification box (text/smooth)
         if (other.gameObject.CompareTag("PinkBoxSmooth") && inPinkSmooth== false) { inPinkSmooth = true; inGrabbed = false; inGreenBox = false; inPinkBox = false; }
         if (other.gameObject.CompareTag("PinkBoxTextured") && inPinkText== false) { inPinkText = true; inGrabbed = false; inGreenBox = false; inPinkBox = false; }
         if (other.gameObject.CompareTag("GreenBoxSmooth") && inGreenSmooth== false) { inGreenSmooth= true; inGrabbed = false; inGreenBox = false; inPinkBox = false; }

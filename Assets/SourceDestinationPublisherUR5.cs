@@ -6,6 +6,10 @@ using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 using Unity.Robotics.UrdfImporter;
 using UnityEngine;
 
+//ROS script, a few things modified from the pick and place tutorial to adapt it to UR5, but no more changes needed.
+
+
+
 public class SourceDestinationPublisherUr5 : MonoBehaviour
 {
     const int k_NumRobotJoints = 6;

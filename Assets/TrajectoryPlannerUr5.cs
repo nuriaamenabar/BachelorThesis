@@ -7,6 +7,10 @@ using Unity.Robotics.ROSTCPConnector;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 using UnityEngine;
 
+//ROS script, a few things modified from the pick and place tutorial to adapt it to UR5, but no more changes needed.(EXCEPT FOR MODIFYING k_JointAssignmentWait --> SPEED OF ROBOT
+//) 
+
+
 public class TrajectoryPlannerUr5 : MonoBehaviour
 {
     // Hardcoded variables

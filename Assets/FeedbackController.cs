@@ -26,13 +26,14 @@ public class FeedbackController : MonoBehaviour
     private GameObject currentnotif;
     public GameObject Uduino;
     public AudioSource audioSource;
+    public Lookray look;
     
 
 
    
     public float VisualDuration = 2f;// For non pulsated one
     private int numpulses = 5;
-    private float timetochange=0;
+   
     private float clock = 0f;
     public float FeedbackActivatedIn=0;
 
@@ -42,8 +43,6 @@ public class FeedbackController : MonoBehaviour
         if (AudioFeedback) PlayerStats.pilotStats.scene.Add("Audio");
         if (VisualFeedback) PlayerStats.pilotStats.scene.Add("Visual");
         if (EMSFeedback) PlayerStats.pilotStats.scene.Add("Haptic");
-
-
         if (surveilance) { PlayerStats.pilotStats.surveilance = "yes"; surveilanceObj.SetActive(true); }
         else { PlayerStats.pilotStats.surveilance = "no"; surveilanceObj.SetActive(false); } 
 
@@ -60,7 +59,7 @@ public class FeedbackController : MonoBehaviour
     {
         clock += Time.deltaTime;
 
-        if ((prov.pinkfull  || prov.greenfull) && (clock-FeedbackActivatedIn)>5) // if a box is full and the last notification has been over 5 secs (so that notifications while you havent acted dont overlap)
+        if ((prov.pinkfull  || prov.greenfull) && (clock-FeedbackActivatedIn)>5 && look.inrobot==false ) // if a box is full and the last notification has been over 5 secs (so that notifications while you havent acted dont overlap)
         {
             print("INSIDE");
             if (prov.pinkfull) currentnotif = notifPink;
@@ -68,8 +67,7 @@ public class FeedbackController : MonoBehaviour
             FeedbackActivatedIn = clock;
             PlayerStats.pilotStats.Feedback.Add(clock);
             System.Random rd = new System.Random();
-            //int rand = rd.Next(30, 60);
-            //InterpolationTime = rand;
+            
 
 
             if (pulsated)
@@ -83,7 +81,7 @@ public class FeedbackController : MonoBehaviour
                 if (VisualFeedback) { StartCoroutine(VisualLoop()); }
                 if (EMSFeedback) { StartCoroutine(EMSLoop()); }
             }
-            //time = 0;
+          
         }
         
            
@@ -129,194 +127,9 @@ public class FeedbackController : MonoBehaviour
     }
 }
 
-    //void WhichChannel()
-    //{
-    //    if (last)
-    //    {
-    //        audioSource.panStereo = -1;
-    //        currentnotif = notifL;
-    //        last = false;
-    //    }
-    //    else
-    //    {
-    //        audioSource.panStereo = 1;
-    //        currentnotif = notifR;
-    //        last = true;
-    //    }
 
-    //}
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.Audio;
-//using UnityEngine.EventSystems;
-//using UnityEngine.UI;
-
-
-
-//[RequireComponent(typeof(AudioSource))]
-//public class FeedbackEvent : MonoBehaviour
-//{
-//    public FeedbackController feedb;
-//    public prova prov;
-//    public bool AudioFeedback;
-//    public bool VisualFeedback;
-//    public bool pulsated;
-
-
-//    public GameObject notifR;
-//    public GameObject notifL;
-//    private GameObject currentnotif;
-//    public AudioSource audioSource;
-//    public bool JustChanged = true;
-
-
-//    private float time = 0f;
-//    public float InterpolationTime = 15f;
-//    public float VisualDuration = 2f;// For non pulsated one
-//    private bool inbutton;
-//    private int numpulses = 5;
-//    private float timetochange = 0;
-
-
-
-
-
-
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-//        notifR.SetActive(false);
-//        notifL.SetActive(false);
-//        inbutton = true;
-//    }
-
-//    // Update is called once per frame
-//    void Update()
-//    {
-//        if (prov.cont >= 4 && inbutton == true)
-//        {
-
-//            audioSource.panStereo = 1;
-//            currentnotif = notifR;
-//            inbutton = false;
-//            JustChanged = true;
-
-
-//            if (pulsated)
-//            {
-//                if (AudioFeedback) { StartCoroutine(AudioLoopPulse()); }
-//                if (VisualFeedback) { StartCoroutine(VisualLoopPulse()); }
-//            }
-//            else
-//            {
-//                if (AudioFeedback) { audioSource.Play(); }
-//                if (VisualFeedback) { StartCoroutine(VisualLoop()); }
-//            }
-
-//            prov.cont = 0;
-
-//        }
-
-
-
-
-
-//    }
-
-
-//    IEnumerator VisualLoop()
-//    {
-
-
-//        currentnotif.SetActive(true);
-//        yield return new WaitForSeconds(VisualDuration);
-//        currentnotif.SetActive(false);
-
-
-//    }
-
-
-//    IEnumerator AudioLoopPulse()
-//    {
-
-//        //WhichChannel();
-//        for (int i = 1; i <= numpulses; i++)
-//        {
-//            audioSource.Play();
-//            yield return new WaitForSeconds(1);
-//        }
-
-
-
-//    }
-
-//    IEnumerator VisualLoopPulse()
-//    {
-
-//        // WhichChannel();
-//        for (int i = 1; i <= numpulses; i++)
-//        {
-//            currentnotif.SetActive(true);
-//            yield return new WaitForSeconds(0.5f);
-//            currentnotif.SetActive(false);
-//            yield return new WaitForSeconds(0.5f);
-
-
-//        }
-//    }
-
-
-
-//}
-
-
-
-
-//void Update()
-//{
-//    time += Time.deltaTime;
-//    clock += Time.deltaTime;
-//    timetochange += Time.deltaTime;
-//    if (time >= InterpolationTime)
-//    {
-//        FeedbackActivatedIn = clock;
-//        PlayerStats.pilotStats.interpolationFeedback.Add(clock);
-//        System.Random rd = new System.Random();
-//        int rand = rd.Next(30, 60);
-//        InterpolationTime = rand;
-
-
-//        if (pulsated)
-//        {
-//            if (AudioFeedback) { StartCoroutine(AudioLoopPulse()); }
-//            if (VisualFeedback) { StartCoroutine(VisualLoopPulse()); }
-//        }
-//        else
-//        {
-//            if (AudioFeedback) { audioSource.Play(); }
-//            if (VisualFeedback) { StartCoroutine(VisualLoop()); }
-//            if (EMSFeedback) { StartCoroutine(EMSLoop()); }
-//        }
-//        time = 0;
-
-//    }
-//}
