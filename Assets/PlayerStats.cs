@@ -61,7 +61,7 @@ public class PilotStats
     public List<float> FirstButton = new List<float>();//First button pressed after changing view to the secondary task
     public List<float> FirstGrabbed = new List<float>();
 
-    public List<float> interpolationFeedback = new List<float>();
+    public List<float> Feedback = new List<float>();
     public List<float> TimeViewingPanel = new List<float>();
     public List<float> TimeViewingRobot = new List<float>();
  
@@ -70,7 +70,14 @@ public class PilotStats
     public List<int> mistakesClass = new List<int>();
     public List<int> correctClass = new List<int>();
 
+    public List<float> GreenBoxFilled = new List<float>();
+    public List<float> PinkBoxFilled = new List<float>();
+    public List<float> GreenBoxEmptied = new List<float>();
+    public List<float> PinkBoxEmptied = new List<float>();
     
+    public List<int> CubesInPinkBoxWhenStartedLooking = new List<int>();
+
+
 
 
 

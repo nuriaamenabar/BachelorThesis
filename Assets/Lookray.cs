@@ -43,7 +43,7 @@ public class Lookray : MonoBehaviour
                     JustChangedVisionToPannels_count = true; //assistant variable only to help count cubes
                     TimeChangedVisionToPannels = clock;
                     PlayerStats.pilotStats.ChangeViewToPanels.Add((clock));
-                    PlayerStats.pilotStats.TimeViewingRobot.Add(TimeChangedVisionToRobot - TimeChangedVisionToPannels);
+                    PlayerStats.pilotStats.TimeViewingRobot.Add(TimeChangedVisionToPannels-TimeChangedVisionToRobot);
                     last = inbutton;
                 }
             }
@@ -55,7 +55,7 @@ public class Lookray : MonoBehaviour
                     JustChangedVisionToRobot_count1 = true;
                     JustChangedVisionToRobot_count2 = true;
                     TimeChangedVisionToRobot = clock;
-                    PlayerStats.pilotStats.TimeViewingPanel.Add(TimeChangedVisionToPannels - TimeChangedVisionToRobot);
+                    PlayerStats.pilotStats.TimeViewingPanel.Add(TimeChangedVisionToRobot-TimeChangedVisionToPannels);
                     PlayerStats.pilotStats.ChangeViewToRobot.Add(clock);
                     last = inbutton;
                 }

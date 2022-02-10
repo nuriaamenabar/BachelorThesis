@@ -432,7 +432,7 @@ namespace Uduino
         //BLE Settings
         public bool autoConnectToLastDevice = true;
         public int bleScanDuration = 3;
-        public UduinoInterfaceType interfaceType = UduinoInterfaceType.Full; // Full, Minimal, None
+        public UduinoInterfaceType interfaceType = UduinoInterfaceType.None; // Full, Minimal, None
 
         //Wifi setting
 

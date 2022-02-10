@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using TMPro;
 
 public class prova : MonoBehaviour
 {
@@ -16,19 +18,23 @@ public class prova : MonoBehaviour
     public bool pinkfull = false;
     public CubesInside green;
     public CubesInside pink;
-    
 
+    public TextMeshProUGUI UIGreen;
+    public TextMeshProUGUI UIPink;
+
+    void Start() { SetCountText(); }
 
 
     void Update()
     {
         Timing += Time.deltaTime;
+        SetCountText();
         if (Timing >= 1f)// Waiting a second to start otherwise it gets a bit crazy
         {
            
             //Checks if any of the boxes are full. If they are full it checks if they have already been emptied completely
-            if (green.CubesInBox >= 3) greenfull =  true;
-            if (pink.CubesInBox >= 3) pinkfull = true;
+            if (green.CubesInBox >= 5) greenfull =  true;
+            if (pink.CubesInBox >= 5) pinkfull = true;
             if (greenfull && green.CubesInBox ==0) { greenfull = false; }
             if (pinkfull && pink.CubesInBox ==0) { pinkfull = false; }
 
@@ -50,6 +56,14 @@ public class prova : MonoBehaviour
 
 
         }
+    }
+
+
+    void SetCountText()
+    {
+        UIGreen.text = green.CubesInBox.ToString();
+        UIPink.text = pink.CubesInBox.ToString();
+
     }
 }
 

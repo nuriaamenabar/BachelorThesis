@@ -41,6 +41,7 @@ public class FeedbackController : MonoBehaviour
         else if (VisualFeedback&& !EMSFeedback && !AudioFeedback) PlayerStats.pilotStats.scene = "Visual";
         else if (EMSFeedback && AudioFeedback && !VisualFeedback) PlayerStats.pilotStats.scene = "Haptic";
         else if (AudioFeedback && VisualFeedback && EMSFeedback) PlayerStats.pilotStats.scene = "Multimodal";
+        else if (AudioFeedback && VisualFeedback) PlayerStats.pilotStats.scene = "Audio and visual";
         else PlayerStats.pilotStats.scene = "NoFeedback";
 
         notifGreen.SetActive(false);
@@ -61,7 +62,7 @@ public class FeedbackController : MonoBehaviour
             if (prov.pinkfull) currentnotif = notifPink;
             if (prov.greenfull) currentnotif = notifGreen;
             FeedbackActivatedIn = clock;
-            PlayerStats.pilotStats.interpolationFeedback.Add(clock);
+            PlayerStats.pilotStats.Feedback.Add(clock);
             System.Random rd = new System.Random();
             //int rand = rd.Next(30, 60);
             //InterpolationTime = rand;

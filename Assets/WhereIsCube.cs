@@ -51,10 +51,10 @@ public class WhereIsCube : MonoBehaviour
         if (other.gameObject.CompareTag("GreenBox") && inGreenBox == false) { inGreenBox = true; }
         if (other.gameObject.CompareTag("PinkBox") && inPinkBox == false) { inPinkBox = true; }
         // if (){inGrabbed=tre, la resta false}
-        if (other.gameObject.CompareTag("PinkBoxSmooth") && inPinkSmooth== false) { inPinkSmooth = true; inGrabbed = false; }
-        if (other.gameObject.CompareTag("PinkBoxTextured") && inPinkText== false) { inPinkText = true; inGrabbed = false; }
-        if (other.gameObject.CompareTag("GreenBoxSmooth") && inGreenSmooth== false) { inGreenSmooth= true; inGrabbed = false; }
-        if (other.gameObject.CompareTag("GreenBoxTextured") && inGreenText == false) { inGreenText = true; inGrabbed = false; }
+        if (other.gameObject.CompareTag("PinkBoxSmooth") && inPinkSmooth== false) { inPinkSmooth = true; inGrabbed = false; inGreenBox = false; inPinkBox = false; }
+        if (other.gameObject.CompareTag("PinkBoxTextured") && inPinkText== false) { inPinkText = true; inGrabbed = false; inGreenBox = false; inPinkBox = false; }
+        if (other.gameObject.CompareTag("GreenBoxSmooth") && inGreenSmooth== false) { inGreenSmooth= true; inGrabbed = false; inGreenBox = false; inPinkBox = false; }
+        if (other.gameObject.CompareTag("GreenBoxTextured") && inGreenText == false) { inGreenText = true; inGrabbed = false; inGreenBox = false; inPinkBox = false; }
 
 
 
