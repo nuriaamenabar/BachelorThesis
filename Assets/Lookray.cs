@@ -2,16 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Basically for logging purposes. Chaécks where the participant is looking (Button task or Robot Task). It checks it by checking if camera is interacting
+ * with one of the two invisible planes (corresponding to each task) that you can find in environment
+ * 
+ * It is a component of the center eye camera
+ * 
+ * 
+ */
+
+
+
 public class Lookray : MonoBehaviour
 {
-    Camera cam;
-    public bool inrobot;
-    public bool inbutton;
+    Camera cam; 
+    public bool inrobot; //True if participant is looking at robot
+    public bool inbutton; //True if participant is lookig´ng at buttons task
     private bool last = true;
-    public bool JustChangedVisionToPannels = true;
-    public bool JustChangedVisionToRobot = false;
-    public bool JustChangedVisionToRobot_count1 = false;
-    public bool JustChangedVisionToRobot_count2 = false;
+    public bool JustChangedVisionToPannels = true;//Auxiliar variable for logs. True when change view to Pannels, false when
+    public bool JustChangedVisionToRobot = false;//Auxiliar variable 
+    public bool JustChangedVisionToRobot_count1 = false;//Auxiliar variable 
+    public bool JustChangedVisionToRobot_count2 = false;//Auxiliar variable 
     public bool JustChangedVisionToPannels_count = true;
 
     private float clock = 0f;
@@ -63,7 +75,6 @@ public class Lookray : MonoBehaviour
             }
             
         }
-       // if (hit.transform.name == "button task") inbutton = true;
 
 
 

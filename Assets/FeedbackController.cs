@@ -39,15 +39,12 @@ public class FeedbackController : MonoBehaviour
 
     void Start()
     {
-        if (AudioFeedback && !EMSFeedback && !VisualFeedback) PlayerStats.pilotStats.scene = "Audio";
-        else if (VisualFeedback&& !EMSFeedback && !AudioFeedback) PlayerStats.pilotStats.scene = "Visual";
-        else if (EMSFeedback && AudioFeedback && !VisualFeedback) PlayerStats.pilotStats.scene = "Haptic";
-        else if (AudioFeedback && VisualFeedback && EMSFeedback) PlayerStats.pilotStats.scene = "Multimodal";
-        else if (AudioFeedback && VisualFeedback) PlayerStats.pilotStats.scene = "Audio and visual";
-        else PlayerStats.pilotStats.scene = "NoFeedback";
+        if (AudioFeedback) PlayerStats.pilotStats.scene.Add("Audio");
+        if (VisualFeedback) PlayerStats.pilotStats.scene.Add("Visual");
+        if (EMSFeedback) PlayerStats.pilotStats.scene.Add("Haptic");
 
 
-        if (surveilance) { PlayerStats.pilotStats.surveilance = "yes"; }
+        if (surveilance) { PlayerStats.pilotStats.surveilance = "yes"; surveilanceObj.SetActive(true); }
         else { PlayerStats.pilotStats.surveilance = "no"; surveilanceObj.SetActive(false); } 
 
 

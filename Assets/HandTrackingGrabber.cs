@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using OculusSampleFramework;
 
+//From the oculus package for hand tracking, havent modified anything from here
+
 public class HandTrackingGrabber : OVRGrabber
 {
     private OVRHand hand;

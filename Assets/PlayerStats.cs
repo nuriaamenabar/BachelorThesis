@@ -51,7 +51,7 @@ public class PlayerStats : MonoBehaviour
 public class PilotStats
 {
     public string participant = "";
-    public string scene = "";
+    public List<string>  scene= new List<string>();
     public string surveilance = "";
     public float startTime = 0;
     public List<int> score = new List<int>();
