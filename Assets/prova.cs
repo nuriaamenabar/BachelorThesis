@@ -9,8 +9,7 @@ using TMPro;
 /*
  * 
  * The publisher of the robot. It publishes every time the robot has finished the previous trajectory, as long as none of the boxes are full.
- * If some box is full, it doesn´'t start again until it is emptied (There´s a margin of two in case there´s some problem with the grabbables that they fall, etc,
- * but it´s pretty important that the participant actually classifies them and they dont fall)
+ * If some box is full, it doesn´'t start again until it is emptied 
  * 
  * 
  */
@@ -50,8 +49,8 @@ public class prova : MonoBehaviour
             //Checks if any of the boxes are full. If they are full it checks if they have already been emptied completely
             if (green.CubesInBox >= CubesToStop && justemptiedg) { greenfull = true; justemptiedg=false; PlayerStats.pilotStats.GreenBoxFilled.Add(clock); }
             if (pink.CubesInBox >= CubesToStop && justemptiedp) { pinkfull = true;  justemptiedp = false; PlayerStats.pilotStats.PinkBoxFilled.Add(clock); }
-            if (greenfull && green.CubesInBox <=2 && justemptiedg ==false ) { greenfull = false; justemptiedg = true; PlayerStats.pilotStats.GreenBoxEmptied.Add(clock); }
-            if (pinkfull && pink.CubesInBox<=2 && justemptiedp == false) { pinkfull = false; justemptiedp = true; PlayerStats.pilotStats.PinkBoxEmptied.Add(clock); }
+            if (greenfull && green.CubesInBox ==0 && justemptiedg ==false ) { greenfull = false; justemptiedg = true; PlayerStats.pilotStats.GreenBoxEmptied.Add(clock); }
+            if (pinkfull && pink.CubesInBox==0 && justemptiedp == false) { pinkfull = false; justemptiedp = true; PlayerStats.pilotStats.PinkBoxEmptied.Add(clock); }
 
 
             //If the robot is not executing the previous trajectory and none of the boxes are full,

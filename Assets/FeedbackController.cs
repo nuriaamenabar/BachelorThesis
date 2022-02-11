@@ -93,8 +93,9 @@ public class FeedbackController : MonoBehaviour
             }
           
         }
-        
-           
+        if(surveilance && look.inrobot) surveilanceObj.SetActive(false);
+        if (surveilance && look.inrobot==false) surveilanceObj.SetActive(true);
+
 
     }
     

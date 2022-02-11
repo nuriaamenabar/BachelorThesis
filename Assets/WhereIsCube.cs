@@ -62,15 +62,31 @@ public class WhereIsCube : MonoBehaviour
 
         if (other.gameObject.CompareTag("GreenBox") && inGreenBox == false) { inGreenBox = true; }//Two main boxes (classified by robot)
         if (other.gameObject.CompareTag("PinkBox") && inPinkBox == false) { inPinkBox = true; }
-        
-        //Once the cube is classified , it stops being in green/pink and it´s in the correspondant classification box (text/smooth)
-        if (other.gameObject.CompareTag("PinkBoxSmooth") && inPinkSmooth== false) { inPinkSmooth = true; inGrabbed = false; inGreenBox = false; inPinkBox = false; }
-        if (other.gameObject.CompareTag("PinkBoxTextured") && inPinkText== false) { inPinkText = true; inGrabbed = false; inGreenBox = false; inPinkBox = false; }
-        if (other.gameObject.CompareTag("GreenBoxSmooth") && inGreenSmooth== false) { inGreenSmooth= true; inGrabbed = false; inGreenBox = false; inPinkBox = false; }
-        if (other.gameObject.CompareTag("GreenBoxTextured") && inGreenText == false) { inGreenText = true; inGrabbed = false; inGreenBox = false; inPinkBox = false; }
-        if (other.gameObject.CompareTag("floor") ) { inPinkBox= false; inGreenBox = false;  }//In case it falls, otherwise it doesnt get detected as its not in the boxes
+
+        if (other.gameObject.CompareTag("PinkBoxSmooth") && inPinkSmooth == false) { inPinkSmooth = true; }
+        if (other.gameObject.CompareTag("PinkBoxTextured") && inPinkText == false) { inPinkText = true;  }
+        if (other.gameObject.CompareTag("GreenBoxSmooth") && inGreenSmooth == false) { inGreenSmooth = true; }
+        if (other.gameObject.CompareTag("GreenBoxTextured") && inGreenText == false) { inGreenText = true; }
+        if (other.gameObject.CompareTag("floor")) { inPinkBox = false; inGreenBox = false; }//In case it falls, otherwise it doesnt get detected as its not in the boxes
 
 
 
     }
+
+
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        //The location of the cube is updated everytime it collides with something. Then it stops being in th elast place and it is in the next one
+
+        if (other.gameObject.CompareTag("GreenBox") ) { inGreenBox = false; }//Two main boxes (classified by robot)
+        if (other.gameObject.CompareTag("PinkBox") ) { inPinkBox = false; }
+        //Since other boxes are holes once thay are in they will never stop being there, so no need to 
+
+
+
+    }
+
+
 }
