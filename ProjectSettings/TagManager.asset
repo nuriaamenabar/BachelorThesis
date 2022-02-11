@@ -28,6 +28,7 @@ TagManager:
   - GreenS
   - PinkT
   - PinkS
+  - floor
   layers:
   - Default
   - TransparentFX

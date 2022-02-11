@@ -5,29 +5,39 @@ using System;
 using UnityEngine.UI;
 using TMPro;
 
+
+/*
+ * 
+ * The publisher of the robot. It publishes every time the robot has finished the previous trajectory, as long as none of the boxes are full.
+ * If some box is full, it doesn´'t start again until it is emptied (There´s a margin of two in case there´s some problem with the grabbables that they fall, etc,
+ * but it´s pretty important that the participant actually classifies them and they dont fall)
+ * 
+ * 
+ */
 public class prova : MonoBehaviour
 {
-    public TrajectoryPlannerUr5 trajplan;
+    public TrajectoryPlannerUr5 trajplan; 
+    public int CubesToStop = 5;//Cubes it takes for robot to stop
     private float clock = 0f;
-    private int i = 0;
-    public GameObject[] TargetArray;
+    private int i = 0;//Auxiliar, to count how many cubes have been sorted
+    public GameObject[] TargetArray;//Array with all grabbables, ordered
     public GameObject Greenplacement;
     public GameObject Pinkplacement;
     public int cont = 0;
-    public bool greenfull = false;
+    public bool greenfull = false;//Auxiliary bools
     public bool pinkfull = false;
     public CubesInside green;
     public CubesInside pink;
 
-    public TextMeshProUGUI UIGreen;
+    public TextMeshProUGUI UIGreen;//For the second surveilance mode (not used)
     public TextMeshProUGUI UIPink;
 
 
 
-    private bool justemptiedg=true;
+    private bool justemptiedg=true;//Auxiliary bools
     private bool justemptiedp=true;
   
-    void Start() { SetCountText(); }
+    void Start() { SetCountText(); }//FOr the surveilance with numbers, sets UI to cubes in each box
 
 
     void Update()
@@ -38,10 +48,10 @@ public class prova : MonoBehaviour
         {
 
             //Checks if any of the boxes are full. If they are full it checks if they have already been emptied completely
-            if (green.CubesInBox >= 5 && justemptiedg) { greenfull = true; justemptiedg=false; PlayerStats.pilotStats.GreenBoxFilled.Add(clock); }
-            if (pink.CubesInBox >= 5 && justemptiedp) { pinkfull = true;  justemptiedp = false; PlayerStats.pilotStats.PinkBoxFilled.Add(clock); }
-            if (greenfull && green.CubesInBox ==0 && justemptiedg ==false ) { greenfull = false; justemptiedg = true; PlayerStats.pilotStats.GreenBoxEmptied.Add(clock); }
-            if (pinkfull && pink.CubesInBox ==0 && justemptiedp == false) { pinkfull = false; justemptiedp = true; PlayerStats.pilotStats.PinkBoxEmptied.Add(clock); }
+            if (green.CubesInBox >= CubesToStop && justemptiedg) { greenfull = true; justemptiedg=false; PlayerStats.pilotStats.GreenBoxFilled.Add(clock); }
+            if (pink.CubesInBox >= CubesToStop && justemptiedp) { pinkfull = true;  justemptiedp = false; PlayerStats.pilotStats.PinkBoxFilled.Add(clock); }
+            if (greenfull && green.CubesInBox <=2 && justemptiedg ==false ) { greenfull = false; justemptiedg = true; PlayerStats.pilotStats.GreenBoxEmptied.Add(clock); }
+            if (pinkfull && pink.CubesInBox<=2 && justemptiedp == false) { pinkfull = false; justemptiedp = true; PlayerStats.pilotStats.PinkBoxEmptied.Add(clock); }
 
 
             //If the robot is not executing the previous trajectory and none of the boxes are full,

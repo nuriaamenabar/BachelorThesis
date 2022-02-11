@@ -6,9 +6,7 @@ using UnityEngine;
 /*
  * Script attached to every cube/grabbable, it checks where the grabbbableis
  * 
- * 
- * 
- * 
+ 
  * 
  */
 

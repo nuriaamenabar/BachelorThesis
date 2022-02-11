@@ -40,11 +40,11 @@ public class FeedbackController : MonoBehaviour
     public Lookray look;//To check where participant is looking, from OVRCameraRig´s CenterEyeAnchor
     private GameObject currentnotif;//Auxiliary 
     public float FeedbackActivatedIn = 0;//Auxiliary
-    private float clock = 0f
+    private float clock = 0f;
     
     //Parameters of the feedback it´self
     private float VisualDuration = 2f;// For non pulsated visual feedback, how long does the visual feedback last
-    private int numpulses = 5//For pulsated one, how many pulses per feedback
+    private int numpulses = 5;//For pulsated one, how many pulses per feedback
     
     
 
