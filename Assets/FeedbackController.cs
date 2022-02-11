@@ -112,7 +112,7 @@ public class FeedbackController : MonoBehaviour
     IEnumerator EMSLoop()
     {
         UduinoManager.Instance.digitalWrite(6, State.HIGH);
-        yield return new WaitForSeconds(VisualDuration);
+        yield return new WaitForSeconds(3);
         UduinoManager.Instance.digitalWrite(6, State.LOW);
     }
 

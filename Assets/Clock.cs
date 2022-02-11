@@ -15,7 +15,7 @@ public class Clock : MonoBehaviour
     void Update()
     {
         clock += Time.deltaTime;
-        if (clock - StartAt > 5 * 60) { print("END"); Application.Quit(); }// UnityEditor.EditorApplication.isPlaying = false; A}
+        if (clock - StartAt > 3 * 60) { print("END"); UnityEditor.EditorApplication.isPlaying = false; }//  A}
 
     }
     void StartTime()
