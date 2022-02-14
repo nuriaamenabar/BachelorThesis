@@ -10,7 +10,6 @@ To initiate ROS, turn on the VMWare. Run this on the terminal:
 ```
     cd Unity-Robotics-Hub/tutorials/pick_and_place/ROS/
     echo "ROS_IP: $(hostname -I)" > src/ur5_moveit/config/params.yaml
-    echo "ROS_IP: $(hostname -I)" > src/niryo_moveit/config/params.yaml
     source devel/setup.bash
     hostname -I
     chmod +x src/ur5_moveit/scripts/mover.py
