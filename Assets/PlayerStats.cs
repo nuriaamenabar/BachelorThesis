@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+//Script to save all the logs in a json file. Before every participant, make sure folder wit P"" is created inside of Study results, and change in
+//this script the number of participant.
+
 public class PlayerStats : MonoBehaviour
-{
+{ 
 
     [SerializeField] public static PilotStats pilotStats = new PilotStats();
     public static string fileName;
     public static float startTime;
     public static float endTime;
-    public static string participant = "P5";
+    public static string participant = "P5";//CHANGE MANUALLY FOR EACH PARTICIPANT
 
 
     public void Start()
     {
-        /*fileName = SceneManager.GetActiveScene().name + "_" + System.DateTime.Now + ".json";
-        fileName = fileName.Replace(" ", "_");*/
+  
         pilotStats.participant = participant;
         fileName = SceneManager.GetActiveScene().name + " " + System.DateTime.Now + ".json";
         fileName = fileName.Replace("/", "_");
@@ -52,12 +55,12 @@ public class PilotStats
 {
     public string participant = "";
     public List<string>  scene= new List<string>();
-    public string surveilance = "";
-    public float startTime = 0;
-    public List<int> score = new List<int>();
-    public int totalButton = 0;
-    public List<float> ChangeViewToPanels = new List<float>();//Tim
-    public List<float> ChangeViewToRobot = new List<float>();
+    public string surveilance = "";//Yes or no, gets the value from feedback controller
+    public float startTime = 0;//Time when start button is clicked (This time shoud be deducted from each time variable)
+    public List<int> score = new List<int>();//Score of pannels
+    public int totalButton = 0;//Number of buttons pushed
+    public List<float> ChangeViewToPanels = new List<float>();//Time part. has changed their view to Pannels
+    public List<float> ChangeViewToRobot = new List<float>();//"" to Robot
 
     public List<float> FirstButton = new List<float>();//Time ofFirst button pressed after changing view to the secondary task
     public List<float> FirstGrabbed = new List<float>();//Time of First obj grabbed after changing view to the robot task
