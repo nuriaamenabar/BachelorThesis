@@ -12,24 +12,26 @@ public class ChangePannels : MonoBehaviour
 {
     public GameObject[] PannelsArray; //Array containing all the panels. 
     public Physicsbutton physbut;//When added to a button?s onPush, you have to put the corresponding button (See Button?s onpush), to track the tag of the button that has been pushed 
-    private int i=0;  // counter of which panel is active
+   
     public int score = 0; //Track of the score
     public TextMeshProUGUI countText; // UI where the score will be rendered
     public int TotalButtons; //Number of times a button has been pushed (correct or incorrect)
     public Lookray ray; //Ray element that tracks where the participant is watching (for logging things), attached to centereyeanchor frpm OVRCamera
-    private float clock = 0; 
-    
-    
+    private float clock = 0;
+    private int i;
+
 
     void Start()
     {
+ 	     // counter of which panel is active
         SetCountText(); //Sets score UI text to actual score
 
         foreach(GameObject Pannel in PannelsArray)//Unactivates all the panels except for the first one in the array
         {
             Pannel.SetActive(false);
         }
-        PannelsArray[0].SetActive(true);       
+        PannelsArray[0].SetActive(true);
+        int i = 0;
     }
     
     void Update() { clock += Time.deltaTime; }//to keep track of time
@@ -49,8 +51,9 @@ public class ChangePannels : MonoBehaviour
 
         SetCountText(); //Update score
         PannelsArray[i].SetActive(false);//Unactivate already solved pannel and activate next one
-        Random rnd = new Random();
-        int i= rnd.Next(1, 60);
+
+        i = Random.Range(0, 59);
+        print("NUmber"+i);
         PannelsArray[i].SetActive(true);
         
    
