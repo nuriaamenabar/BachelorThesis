@@ -11,7 +11,7 @@ using TMPro;
 public class ChangePannels : MonoBehaviour
 {
     public GameObject[] PannelsArray; //Array containing all the panels. 
-    public Physicsbutton physbut;//When added to a button´s onPush, you have to put the corresponding button (See Button´s onpush), to track the tag of the button that has been pushed 
+    public Physicsbutton physbut;//When added to a button?s onPush, you have to put the corresponding button (See Button?s onpush), to track the tag of the button that has been pushed 
     private int i=0;  // counter of which panel is active
     public int score = 0; //Track of the score
     public TextMeshProUGUI countText; // UI where the score will be rendered
@@ -49,10 +49,12 @@ public class ChangePannels : MonoBehaviour
 
         SetCountText(); //Update score
         PannelsArray[i].SetActive(false);//Unactivate already solved pannel and activate next one
-        PannelsArray[i+1].SetActive(true);
-        i++;
+        Random rnd = new Random();
+        int i= rnd.Next(1, 60);
+        PannelsArray[i].SetActive(true);
+        
    
-        if (ray.JustChangedVisionToPannels) //In case you have just changed your view to the pannel and it´s the first button pushed, log time (too keep log of time between seeing and acting)
+        if (ray.JustChangedVisionToPannels) //In case you have just changed your view to the pannel and it?s the first button pushed, log time (too keep log of time between seeing and acting)
         {
           PlayerStats.pilotStats.FirstButton.Add(clock); 
           ray.JustChangedVisionToPannels = false;
