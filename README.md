@@ -1,4 +1,6 @@
 <p align="center"><img src="images/warehouse.gif"/></p>
+# LINK TO THE FINAL REPORT
+http://hdl.handle.net/2117/378166
 
 # INSTRUCTIONS TO RUN THE SIMULATION
 ## EMS
